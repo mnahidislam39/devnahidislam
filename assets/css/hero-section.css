@@ -1,0 +1,652 @@
+.main-header {
+  margin-top: 24px;
+  background-color: var(--dark-bg);
+  border-radius: 100px;
+  padding: 12px 32px;
+  position: relative;
+  z-index: 100;
+
+  /* স্মুথ ট্রানজিশনের জন্য */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* যখন স্ক্রল হবে তখন জেএস এই ক্লাসটি অ্যাড করবে */
+.main-header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  padding: 16px 48px;
+  background-color: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 100px;
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+}
+
+.nav-item.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Logo Design */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.logo-icon {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
+
+/* --- HERO SECTION BASE CONFIG --- */
+.hero-section {
+  position: relative;
+  padding-top: 40px;
+  padding-bottom: 0;
+  min-height: calc(100vh - 120px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 5;
+}
+
+/* Floating Greeting Badge */
+.greeting-badge {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background-color: var(--dark-bg);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 15px;
+  z-index: 10;
+}
+
+.sparkle-icon {
+  position: absolute;
+  top: -15px;
+  right: -20px;
+}
+
+/* Big Hero Typography */
+.hero-heading {
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: -2px;
+  margin-bottom: -40px;
+  position: relative;
+  z-index: 6;
+}
+
+.highlight-text {
+  color: var(--primary-color);
+}
+
+/* --- TECH MESH BACKGROUND DESIGN --- */
+.hero-bg-tech-mesh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* ইমেজ এবং লেখার পেছনে থাকবে */
+  pointer-events: none;
+  user-select: none;
+}
+
+.tech-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(254, 126, 54, 0.12) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(80px);
+}
+
+.tech-item {
+  position: absolute;
+  color: rgba(255, 255, 255, 0.08); /* ভিজিবিলিটি সামান্য বাড়ানো হয়েছে */
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  filter: blur(0.5px); /* ব্লার কমানো হয়েছে ক্লিয়ারিটির জন্য */
+  will-change: transform;
+}
+
+/* আইকনগুলোর পজিশন পারফেক্ট গ্রিড অনুযায়ী সেট করা */
+.floating-item-1 {
+  top: 12%;
+  left: 10%;
+  animation: tech-float 8s ease-in-out infinite;
+  font-size: 26px;
+}
+.floating-item-2 {
+  top: 35%;
+  left: 18%;
+  animation: tech-float 6s ease-in-out infinite alternate;
+  color: rgba(254, 126, 54, 0.1);
+  font-size: 32px;
+}
+.floating-item-3 {
+  top: 68%;
+  left: 8%;
+  animation: tech-float 10s ease-in-out infinite;
+}
+.floating-item-4 {
+  top: 15%;
+  left: 82%;
+  animation: tech-float 7s ease-in-out infinite alternate;
+  font-size: 38px;
+}
+.floating-item-5 {
+  top: 42%;
+  left: 85%;
+  animation: tech-float 9s ease-in-out infinite;
+  color: rgba(254, 126, 54, 0.1);
+}
+.floating-item-6 {
+  top: 72%;
+  left: 78%;
+  animation: tech-float 11s ease-in-out infinite alternate;
+}
+.floating-item-7 {
+  top: 85%;
+  left: 22%;
+  animation: tech-float 8s ease-in-out infinite;
+}
+.floating-item-8 {
+  top: 88%;
+  left: 68%;
+  animation: tech-float 12s ease-in-out infinite alternate;
+}
+.floating-item-9 {
+  top: 8%;
+  left: 70%;
+  animation: tech-float 5s ease-in-out infinite;
+  font-size: 28px;
+}
+
+@keyframes tech-float {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+}
+
+/* --- HERO MASTER WRAPPER --- */
+.hero-section {
+  position: relative;
+  padding: 60px 0;
+  min-height: calc(100vh - 100px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  width: 100%;
+  padding-bottom: 0;
+}
+
+.hero-container {
+  width: 100%;
+  max-width: 1200px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10; /* মেইন কন্টেন্ট যেন উপরে থাকে */
+}
+
+/* Greeting Badge */
+.greeting-badge {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(17, 17, 17, 0.6);
+  backdrop-filter: blur(5px);
+  padding: 6px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  margin-bottom: 15px;
+  z-index: 12;
+}
+
+.sparkle-icon {
+  position: absolute;
+  top: -12px;
+  right: -18px;
+}
+
+/* Typography */
+.hero-heading {
+  font-size: 84px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-align: center;
+  letter-spacing: -2px;
+  margin-bottom: -30px;
+  position: relative;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.highlight-text {
+  color: var(--primary-color);
+}
+
+/* --- TECH BACKGROUND CANVAS --- */
+.hero-bg-tech-mesh {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1; /* লেয়ারের নিচে লক করা */
+  pointer-events: none;
+  user-select: none;
+}
+
+.tech-glow {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(
+    circle,
+    rgba(254, 126, 54, 0.15) 0%,
+    rgba(0, 0, 0, 0) 70%
+  );
+  filter: blur(100px);
+}
+
+.tech-item {
+  position: absolute;
+  color: rgba(
+    255,
+    255,
+    255,
+    0.12
+  ); /* আবছা কিন্তু স্পষ্ট দেখার জন্য ওপাসিটি বাড়ানো হয়েছে */
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  font-size: 24px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  filter: blur(0.5px);
+  will-change: transform;
+}
+
+/* পারফেক্ট গ্রিড পজিশনিং */
+.tech-mesh .item-1 {
+  top: 15%;
+  left: 8%;
+  animation: float-slow 8s ease-in-out infinite;
+}
+.tech-mesh .item-2 {
+  top: 35%;
+  left: 15%;
+  animation: float-reverse 6s ease-in-out infinite;
+  color: rgba(254, 126, 54, 0.15);
+  font-size: 32px;
+}
+.tech-mesh .item-3 {
+  top: 65%;
+  left: 7%;
+  animation: float-slow 10s ease-in-out infinite;
+}
+.tech-mesh .item-4 {
+  top: 12%;
+  left: 85%;
+  animation: float-reverse 7s ease-in-out infinite;
+  font-size: 36px;
+}
+.tech-mesh .item-5 {
+  top: 38%;
+  left: 88%;
+  animation: float-slow 9s ease-in-out infinite;
+  color: rgba(254, 126, 54, 0.15);
+}
+.tech-mesh .item-6 {
+  top: 70%;
+  left: 80%;
+  animation: float-reverse 11s ease-in-out infinite;
+}
+.tech-mesh .item-7 {
+  top: 85%;
+  left: 20%;
+  animation: float-slow 8s ease-in-out infinite;
+}
+.tech-mesh .item-8 {
+  top: 88%;
+  left: 68%;
+  animation: float-reverse 12s ease-in-out infinite;
+}
+.tech-mesh .item-9 {
+  top: 8%;
+  left: 65%;
+  animation: float-slow 5s ease-in-out infinite;
+}
+
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-15px) rotate(2deg);
+  }
+}
+
+@keyframes float-reverse {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(12px) rotate(-2deg);
+  }
+}
+
+/* --- CENTER VISUALS (IMAGE & AVATAR) --- */
+.hero-center-content {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: 12;
+  margin-top: 10px;
+  overflow: hidden;
+  border-top-left-radius: 500px;
+  border-top-right-radius: 500px;
+}
+
+.circle-bg {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 100%;
+  background-color: #ffdeca;
+  border-top-left-radius: 500px;
+  border-top-right-radius: 500px;
+  z-index: -1;
+}
+
+.hero-image-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(17, 17, 17, 0) 60%,
+    rgba(17, 17, 17, 0.5) 100%
+  );
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Glassmorphism Navigation Actions */
+.cta-glass-container {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 8px;
+  border-radius: 100px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  z-index: 20;
+}
+
+.btn-portfolio {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 24px;
+  border-radius: 100px;
+  font-weight: 600;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: transform 0.2s ease;
+}
+
+.btn-portfolio:hover {
+  transform: scale(1.03);
+}
+
+.btn-hire {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 12px 20px;
+  font-weight: 500;
+  font-size: 15px;
+  transition: opacity 0.2s ease;
+}
+
+.btn-hire:hover {
+  opacity: 0.8;
+}
+
+/* --- WIDGETS --- */
+.hero-left-widget {
+  position: absolute;
+  left: 10px;
+  bottom: 15%;
+  max-width: 240px;
+  z-index: 15;
+}
+
+.quote-icon {
+  font-size: 48px;
+  color: var(--primary-color);
+  font-family: serif;
+  line-height: 1;
+  display: block;
+}
+
+.quote-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.hero-right-widget {
+  position: absolute;
+  right: 10px;
+  bottom: 15%;
+  text-align: right;
+  z-index: 15;
+}
+
+.rating-stars {
+  color: var(--primary-color);
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.experience-years {
+  font-size: 42px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.experience-text {
+  font-size: 14px;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.deco-line-left {
+  position: absolute;
+  left: 15%;
+  top: 35%;
+  z-index: 2;
+}
+
+/* --- RESPONSIVE BREAKPOINTS --- */
+@media (max-width: 1200px) {
+  .hero-left-widget {
+    left: -10px;
+  }
+  .hero-right-widget {
+    right: -10px;
+  }
+  .deco-line-left {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .hero-heading {
+    font-size: 64px;
+  }
+  .tech-item {
+    font-size: 18px;
+  }
+
+  .hero-left-widget,
+  .hero-right-widget {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    max-width: 100%;
+    margin-top: 35px;
+  }
+  .hero-right-widget {
+    text-align: center;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-heading {
+    font-size: 44px;
+    margin-bottom: -20px;
+  }
+  .hero-center-content {
+    max-width: 100%;
+    height: 400px;
+  }
+  .cta-glass-container {
+    width: 92%;
+    justify-content: center;
+    bottom: 20px;
+  }
+}

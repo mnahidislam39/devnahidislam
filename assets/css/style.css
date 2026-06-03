@@ -1,0 +1,131 @@
+/* --- CSS Reset & Variables --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #fe7e36;
+  --dark-bg: #111111;
+  --text-main: #111111;
+  --text-muted: #555555;
+  --font-family: "Plus Jakarta Sans", sans-serif;
+  --max-width: 1320px;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: #f0f0f0;
+  color: var(--text-main);
+  overflow-x: hidden;
+}
+
+/* Container to prevent layout overflow on ultra-wide screens */
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  position: relative;
+  padding: 0 40px;
+}
+
+.main-header {
+  margin-top: 24px;
+  background-color: var(--dark-bg);
+  border-radius: 100px;
+  padding: 12px 32px;
+  position: relative;
+  z-index: 100;
+
+  /* স্মুথ ট্রানজিশনের জন্য */
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* যখন স্ক্রল হবে তখন জেএস এই ক্লাসটি অ্যাড করবে */
+.main-header.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  padding: 16px 48px;
+  background-color: rgba(17, 17, 17, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-item {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 10px 20px;
+  border-radius: 100px;
+}
+
+.nav-item:hover {
+  color: var(--primary-color);
+}
+
+.nav-item.active {
+  background-color: var(--primary-color);
+  color: #ffffff;
+}
+
+/* Logo Design */
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.5px;
+}
+
+.logo-icon {
+  background-color: var(--primary-color);
+  color: #ffffff;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* Mobile Toggle */
+.mobile-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: 0.3s ease;
+}
