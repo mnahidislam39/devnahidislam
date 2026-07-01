@@ -1,0 +1,219 @@
+:root {
+  --nahid-bg-gradient: linear-gradient(135deg, #161616 0%, #0b0b0b 100%);
+  --nahid-accent-orange: #f27427;
+  --nahid-text-white: #ffffff;
+  --nahid-text-muted: #bcbcbc;
+}
+
+.nahid-services-section {
+  background: var(--nahid-bg-gradient);
+  color: var(--nahid-text-white);
+  padding: 80px 0;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+.nahid-services-section .nahid-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.nahid-services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.nahid-services-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+.nahid-services-title .nahid-accent-text {
+  color: var(--nahid-accent-orange);
+}
+.nahid-services-subtitle {
+  color: var(--nahid-text-muted);
+  max-width: 480px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nahid-services-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.nahid-services-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.nahid-service-card {
+  flex: 0 0 calc(33.333% - 20px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.nahid-service-card-header {
+  padding: 30px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.nahid-service-card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+.nahid-nahid-services-image-stack {
+  position: relative;
+  flex-grow: 1;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.nahid-mockup-layer {
+  position: absolute;
+  width: 100%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nahid-layer-bg-2 {
+  transform: translateY(20px) scale(0.86);
+  opacity: 0.3;
+  z-index: 1;
+}
+.nahid-layer-bg-1 {
+  transform: translateY(10px) scale(0.93);
+  opacity: 0.6;
+  z-index: 2;
+}
+.nahid-layer-main {
+  transform: translateY(0) scale(1);
+  z-index: 3;
+}
+
+.nahid-service-card:hover .nahid-layer-main {
+  transform: translateY(-8px) scale(1.02);
+}
+.nahid-service-card:hover .nahid-layer-bg-1 {
+  transform: translateY(0px) scale(0.96);
+}
+
+.nahid-card-bottom-action {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  background: #0b0b0b;
+  border-top-left-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.nahid-card-bottom-action::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #0b0b0b;
+}
+.nahid-card-bottom-action::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #0b0b0b;
+}
+.nahid-action-circle-btn {
+  width: 64px;
+  height: 64px;
+  background: #19202e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nahid-text-white);
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+.nahid-service-card:hover .nahid-action-circle-btn {
+  background: var(--nahid-accent-orange);
+}
+.nahid-action-circle-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* Refined Premium Dot Indicator Animations with color shifting */
+.nahid-services-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.nahid-services-pagination .nahid-dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.4s ease;
+}
+
+/* Color Shifting Active State Match */
+.nahid-services-pagination .nahid-dot.nahid-active {
+  background-color: var(--nahid-accent-orange);
+  width: 32px;
+  border-radius: 6px;
+}
+
+@media (max-width: 1024px) {
+  .nahid-service-card {
+    flex: 0 0 calc(50% - 15px);
+  }
+  .nahid-services-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+@media (max-width: 680px) {
+  .nahid-service-card {
+    flex: 0 0 100%;
+  }
+  .nahid-services-section .nahid-container {
+    padding: 0 20px;
+  }
+}
