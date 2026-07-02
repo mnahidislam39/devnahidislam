@@ -102,7 +102,7 @@
 /* --- HERO SECTION BASE CONFIG --- */
 .hero-section {
   position: relative;
-  padding-top: 40px;
+  padding-top: 0;
   padding-bottom: 0;
   min-height: calc(100vh - 120px);
   display: flex;

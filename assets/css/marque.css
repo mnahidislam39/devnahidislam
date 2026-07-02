@@ -1,7 +1,7 @@
 .marquee-section {
   position: relative;
   width: 100%;
-  background: transparent;
+  background: var(--nahid-bg-gradient);
   overflow: hidden;
   z-index: 5;
   padding: 60px 0;

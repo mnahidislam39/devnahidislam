@@ -12,7 +12,7 @@
    <link rel="stylesheet" href="assets/css/style.css">
    <link rel="stylesheet" href="assets/css/hero-section.css">
    <link rel="stylesheet" href="assets/css/marque.css">
-   <link rel="stylesheet" href="assets/css/service.css">
+   <link rel="stylesheet" href="assets/css/services.css">
 </head>
 
 <body>
@@ -45,8 +45,8 @@
                </button>
             </div>
          </header>
+         <!-- Hero Section -->
          <section class="hero-section container">
-
             <div class="hero-container">
                <div class="greeting-badge">
                   <span>Hello!</span>
@@ -96,6 +96,43 @@
                </div>
             </div>
          </section>
+
+         <!-- Project Section-->
+         <section class="nahid-services-section">
+            <div class="nahid-container">
+               <div class="nahid-services-header">
+                  <h2 class="nahid-services-title"></h2>
+                  <p class="nahid-services-subtitle"></p>
+               </div>
+
+               <div class="nahid-services-slider-viewport">
+                  <div class="nahid-services-track" id="nahid-services-container">
+                     <div class="nahid-service-card" id="nahid-master-card-template" style="display: none;">
+                        <div class="nahid-service-card-header">
+                           <h3 class="nahid-service-card-title"></h3>
+                        </div>
+                        <div class="nahid-services-image-stack">
+                           <img class="nahid-mockup-layer nahid-layer-bg-2" src="" alt="Stack Frame Background Two">
+                           <img class="nahid-mockup-layer nahid-layer-bg-1" src="" alt="Stack Frame Background One">
+                           <img class="nahid-mockup-layer nahid-layer-main" src=""
+                              alt="Main Service Mockup Cover Screen">
+                        </div>
+                        <div class="nahid-card-bottom-action">
+                           <a href="#" class="nahid-action-circle-btn">
+                              <svg viewBox="0 0 24 24">
+                                 <line x1="7" y1="17" x2="17" y2="7"></line>
+                                 <polyline points="7 7 17 7 17 17"></polyline>
+                              </svg>
+                           </a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="nahid-services-pagination" id="nahid-pagination-container"></div>
+            </div>
+         </section>
+
+         <!-- Marquee Section 
          <div class="marquee-section">
             <div class="wave-layer top-wave">
                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 24 150 28" preserveAspectRatio="none">
@@ -148,25 +185,361 @@
                </svg>
             </div>
          </div>
+         -->
 
-         <section class="nahid-services-section">
-            <div class="nahid-container">
-               <div class="nahid-services-header">
-                  <h2 class="nahid-services-title">My <span class="nahid-accent-text">Services</span></h2>
-                  <p class="nahid-services-subtitle">
-                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis lacus nunc, posuere in justo
-                     vulputate,
-                     bibendum sodales.
-                  </p>
+         <!-- Experience Section -->
+         <section id="experience" class="nahid-experience-section">
+            <div class="nahid-exp-container">
+
+               <div class="nahid-exp-header">
+                  <h2 class="nahid-exp-main-title" id="nahid-exp-title-target"></h2>
                </div>
 
-               <div class="nahid-services-slider-viewport">
-                  <div class="nahid-services-track" id="nahid-services-container"></div>
-               </div>
+               <div class="nahid-timeline-wrapper">
+                  <div class="nahid-timeline-center-line"></div>
 
-               <div class="nahid-services-pagination" id="nahid-pagination-container"></div>
+                  <div id="nahid-experience-injector-track"></div>
+
+                  <div class="nahid-timeline-item" id="nahid-exp-master-template" style="display: none;">
+                     <div class="nahid-timeline-left-block">
+                        <h3 class="company-name"></h3>
+                        <span class="experience-duration"></span>
+                     </div>
+
+                     <div class="nahid-timeline-center-dot-box">
+                        <span class="timeline-dot"></span>
+                     </div>
+
+                     <div class="nahid-timeline-right-block">
+                        <h3 class="role-designation"></h3>
+                        <p class="role-desc"></p>
+                     </div>
+                  </div>
+               </div>
             </div>
          </section>
+
+         <!-- Hire Section -->
+         <section id="why-hire-me" class="nahid-hire-section">
+            <div class="nahid-hire-container">
+
+               <div class="nahid-hire-media-wrapper">
+                  <div class="nahid-asymmetric-bg-card"></div>
+                  <img src="" id="nahid-hire-avatar-target" class="nahid-hire-avatar"
+                     alt="Nahid Islam Profile Avatar Layout">
+               </div>
+
+               <div class="nahid-hire-content-wrapper">
+                  <h2 class="nahid-hire-main-title" id="nahid-hire-title-target">
+                  </h2>
+                  <p class="nahid-hire-description" id="nahid-hire-desc-target">
+                  </p>
+
+                  <div class="nahid-stats-grid-track" id="nahid-stats-injector-track">
+                  </div>
+
+                  <div class="nahid-hire-action-box">
+                     <a href="#" id="nahid-hire-btn-target" class="nahid-btn-pill-outline"></a>
+                  </div>
+               </div>
+
+            </div>
+
+            <template id="nahid-stat-node-template">
+               <div class="nahid-stat-card-item">
+                  <h3 class="stat-counter-number"></h3>
+                  <p class="stat-counter-label"></p>
+               </div>
+            </template>
+         </section>
+
+         <!-- Portfolio Section -->
+         <section class="portfolio-section">
+            <div class="portfolio-container">
+
+               <!-- Top Header Layout -->
+               <div class="portfolio-header">
+                  <h2 class="portfolio-title">Lets have a look at <br>my <span>Portfolio</span></h2>
+                  <a href="#" class="btn-see-all">See All</a>
+               </div>
+
+               <!-- Dynamic Slider Track Wrapper -->
+               <div class="slider-wrapper">
+                  <div class="slider-track" id="portfolioSlider">
+                     <!-- JS will dynamically inject slides here -->
+                  </div>
+               </div>
+
+               <!-- Dynamic Pagination Dots -->
+               <div class="slider-pagination" id="sliderPagination">
+                  <!-- JS will dynamically inject dots here -->
+               </div>
+
+               <!-- Dynamic Content Target (Title, Description & Tags) -->
+               <div class="dynamic-content-area" id="dynamicContentArea">
+                  <div class="tags-container" id="dynamicTags"></div>
+                  <h3 class="project-title-area">
+                     <span id="dynamicTitle"></span>
+                     <a href="#" class="arrow-link" id="dynamicProjectLink" aria-label="View Project">
+                        <svg viewBox="0 0 24 24" width="24" height="24">
+                           <path d="M5 19L19 5M19 5H10M19 5V14" stroke="currentColor" stroke-width="2.5"
+                              stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                        </svg>
+                     </a>
+                  </h3>
+                  <p class="project-desc-area" id="dynamicDesc"></p>
+               </div>
+
+            </div>
+         </section>
+
+
+         <!-- Testimonial Section -->
+         <section class="testimonial-section">
+            <div class="testimonial-container">
+
+               <!-- Section Title Area (Totally Empty Skeleton) -->
+               <div class="testimonial-header">
+                  <h2 class="testimonial-title" id="nahidTestimonialTitle"></h2>
+                  <p class="testimonial-subtitle" id="nahidTestimonialSubtitle"></p>
+               </div>
+
+               <!-- Slider Mask Container -->
+               <div class="testimonial-slider-wrapper">
+                  <div class="testimonial-slider-track" id="testimonialSlider">
+
+                     <!-- 🎯 HTML Template with pure semantic classes & no hardcoded text -->
+                     <div class="testimonial-slide" id="nahidCardTemplate" style="display: none;">
+                        <div class="review-glass-card">
+                           <div class="card-header">
+                              <div class="user-info">
+                                 <img class="client-avatar" src="" alt="">
+                                 <div class="meta">
+                                    <h4 class="client-name"></h4>
+                                    <span class="client-role"></span>
+                                 </div>
+                              </div>
+                              <div class="quote-icon">
+                                 <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                       d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z" />
+                                 </svg>
+                              </div>
+                           </div>
+                           <div class="rating-row">
+                              <div class="stars"></div>
+                              <span class="rating-number"></span>
+                           </div>
+                           <p class="review-text"></p>
+                        </div>
+                     </div>
+
+                  </div>
+               </div>
+
+               <!-- Slider Pagination Dots -->
+               <div class="testimonial-pagination" id="testimonialPagination"></div>
+
+            </div>
+         </section>
+
+         <!-- CTA Contact Section -->
+         <section class="cta-contact-section">
+            <div class="cta-container">
+
+               <!-- Dynamic Heading Area -->
+               <h2 class="cta-heading" id="nahidCtaHeading"></h2>
+
+               <!-- Dynamic Subscription Form Area -->
+               <div class="cta-form-wrapper">
+                  <form class="cta-form" id="nahidCtaForm" novalidate>
+                     <div class="input-group">
+                        <!-- Icon Container -->
+                        <div class="email-icon-box" id="nahidCtaIconBox">
+                           <!-- SVG will be injected here -->
+                        </div>
+                        <input type="email" class="cta-input" id="nahidCtaInput" placeholder="">
+                     </div>
+                     <button type="submit" class="cta-submit-btn" id="nahidCtaSubmitBtn"></button>
+                  </form>
+               </div>
+
+               <!-- Dynamic Trust Badges / Footer Info -->
+               <div class="cta-badges-row" id="nahidCtaBadgesRow">
+                  <!-- Badges will be injected dynamically -->
+               </div>
+
+            </div>
+         </section>
+
+         <!-- Marquee Section -->
+         <section class="nahid-marquee-section">
+            <div class="marquee-skew-wrapper">
+               <div class="marquee-track" id="nahidMarqueeTrack">
+               </div>
+            </div>
+         </section>
+
+         <!-- Pricing Section -->
+         <section class="pricing-section">
+            <div class="pricing-container">
+
+               <div class="pricing-header">
+                  <h2 class="pricing-title" id="nahidPricingTitle"></h2>
+                  <button class="pricing-see-all-btn" id="nahidPricingMainBtn"></button>
+               </div>
+
+               <div class="pricing-grid" id="nahidPricingGrid">
+
+                  <div class="pricing-card" id="nahidPricingTemplate" style="display: none;">
+                     <div class="card-image-box">
+                        <span class="card-tier-tag"></span>
+
+                        <div class="price-display">
+                           <span class="currency-symbol">$</span>
+                           <h3 class="price-amount">00</h3>
+                           <span class="price-duration">/ project</span>
+                        </div>
+
+                        <button class="card-arrow-btn">
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                              <line x1="7" y1="17" x2="17" y2="7"></line>
+                              <polyline points="7 7 17 7 17 17"></polyline>
+                           </svg>
+                        </button>
+                     </div>
+
+                     <div class="card-meta-row">
+                        <span class="meta-item delivery-time"></span>
+                        <span class="meta-item revision-count"></span>
+                     </div>
+
+                     <h4 class="package-title"></h4>
+                     <ul class="package-features-list">
+                     </ul>
+                  </div>
+
+               </div>
+
+            </div>
+         </section>
+
+         <!-- Dynamic FAQ Section -->
+         <section class="nahid-faq-section">
+            <div class="faq-container">
+
+               <!-- Section Header -->
+               <div class="faq-header">
+                  <h2 class="faq-title" id="nahidFaqTitle"></h2>
+               </div>
+
+               <!-- FAQ Accordion Wrapper -->
+               <div class="faq-accordion-list" id="nahidFaqList">
+                  <!-- Accordion items will be injected here dynamically -->
+               </div>
+
+            </div>
+         </section>
+
+         <!-- Dynamic Workflow / Process Section -->
+         <section class="nahid-workflow-section">
+            <div class="workflow-container">
+
+               <!-- Section Header (Dynamically Injected) -->
+               <div class="workflow-header">
+                  <h2 class="workflow-title" id="nahidWorkflowTitle"></h2>
+               </div>
+
+               <!-- Process Steps Grid Grid -->
+               <div class="workflow-grid" id="nahidWorkflowGrid">
+
+                  <!-- 🎯 HTML Template Skeleton (No Hardcoded Content) -->
+                  <div class="workflow-card" id="nahidWorkflowTemplate" style="display: none;">
+                     <div class="workflow-top-row">
+                        <span class="workflow-step-num">00</span>
+                        <div class="workflow-icon-box">
+                           <!-- Icon Dynamic Injection Line -->
+                        </div>
+                     </div>
+                     <h3 class="workflow-step-title"></h3>
+                     <p class="workflow-step-desc"></p>
+                  </div>
+
+               </div>
+
+            </div>
+         </section>
+
+         <!-- Dynamic Premium Footer Section -->
+         <footer class="nahid-main-footer">
+            <div class="footer-wrapper">
+
+               <!-- 🤝 Upper Connect Banner (As seen in image_42ea7c.png) -->
+               <div class="footer-connect-banner">
+                  <h2 class="connect-title" id="nahidFooterConnectTitle"></h2>
+                  <a href="#" class="footer-hire-btn" id="nahidFooterHireBtn">
+                     <span class="btn-text"></span>
+                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" class="btn-arrow">
+                        <line x1="7" y1="17" x2="17" y2="7"></line>
+                        <polyline points="7 7 17 7 17 17"></polyline>
+                     </svg>
+                  </a>
+               </div>
+
+               <hr class="footer-divider">
+
+               <!-- 🌐 Main Info Grid Area -->
+               <div class="footer-main-grid">
+
+                  <!-- Brand & About -->
+                  <div class="footer-brand-col">
+                     <div class="footer-logo-wrap" id="nahidFooterLogoWrap">
+                        <!-- Logo Dynamic Container -->
+                     </div>
+                     <p class="footer-brand-desc" id="nahidFooterDesc"></p>
+                     <!-- Social Profiles Box -->
+                     <div class="footer-social-links" id="nahidFooterSocials"></div>
+                  </div>
+
+                  <!-- Quick Navigation Links -->
+                  <div class="footer-links-col">
+                     <h4 class="col-title">Navigation</h4>
+                     <ul class="footer-link-list" id="nahidFooterNav"></ul>
+                  </div>
+
+                  <!-- Contact Details -->
+                  <div class="footer-links-col">
+                     <h4 class="col-title">Contact</h4>
+                     <ul class="footer-link-list" id="nahidFooterContact"></ul>
+                  </div>
+
+                  <!-- Newsletter Box (Matching input with orange button) -->
+                  <div class="footer-newsletter-col">
+                     <h4 class="col-title" id="nahidNewsletterTitle"></h4>
+                     <form class="footer-newsletter-form" id="nahidNewsletterForm">
+                        <input type="email" class="newsletter-input" id="nahidCtaInput" placeholder="Email Address"
+                           required>
+                        <button type="submit" class="newsletter-submit-btn">
+                           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                              <line x1="22" y1="2" x2="11" y2="13"></line>
+                              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                           </svg>
+                        </button>
+                     </form>
+                  </div>
+
+               </div>
+
+               <hr class="footer-divider">
+
+               <!-- 📝 Bottom Copyright and Legal Terms -->
+               <div class="footer-bottom-row">
+                  <p class="copyright-text" id="nahidCopyrightText"></p>
+                  <div class="footer-legal-links" id="nahidLegalLinks"></div>
+               </div>
+
+            </div>
+         </footer>
 
       </div>
    </div>

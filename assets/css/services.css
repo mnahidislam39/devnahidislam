@@ -1,0 +1,587 @@
+:root {
+  --nahid-bg-gradient: linear-gradient(135deg, #161616 0%, #0b0b0b 100%);
+  --nahid-accent-orange: #f27427;
+  --nahid-text-white: #ffffff;
+  --nahid-text-muted: #bcbcbc;
+}
+
+.nahid-services-section {
+  background: var(--nahid-bg-gradient);
+  color: var(--nahid-text-white);
+  padding: 80px 0;
+  font-family: "Inter", sans-serif;
+  overflow: hidden;
+}
+
+.nahid-services-section .nahid-container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.nahid-services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.nahid-services-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin: 0;
+}
+.nahid-services-title .nahid-accent-text {
+  color: var(--nahid-accent-orange);
+}
+.nahid-services-subtitle {
+  color: var(--nahid-text-muted);
+  max-width: 480px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.nahid-services-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+}
+
+.nahid-services-track {
+  display: flex;
+  gap: 30px;
+  transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+  transform: translate3d(0, 0, 0);
+}
+
+.nahid-service-card {
+  flex: 0 0 calc(33.333% - 20px);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 32px;
+  height: 480px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.nahid-service-card-header {
+  padding: 30px 25px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.nahid-service-card-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 0;
+}
+.nahid-nahid-services-image-stack {
+  position: relative;
+  flex-grow: 1;
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.nahid-mockup-layer {
+  position: absolute;
+  width: 78%;
+  height: auto;
+  border-radius: 18px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.nahid-layer-bg-2 {
+  transform: translateY(20px) scale(0.86);
+  opacity: 0.3;
+  z-index: 1;
+}
+.nahid-layer-bg-1 {
+  transform: translateY(10px) scale(0.93);
+  opacity: 0.6;
+  z-index: 2;
+}
+.nahid-layer-main {
+  transform: translateY(0) scale(1);
+  z-index: 3;
+}
+
+.nahid-service-card:hover .nahid-layer-main {
+  transform: translateY(-8px) scale(1.02);
+}
+.nahid-service-card:hover .nahid-layer-bg-1 {
+  transform: translateY(0px) scale(0.96);
+}
+
+.nahid-card-bottom-action {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 90px;
+  height: 90px;
+  background: #0b0b0b;
+  border-top-left-radius: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+}
+.nahid-card-bottom-action::before {
+  content: "";
+  position: absolute;
+  top: -20px;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #0b0b0b;
+}
+.nahid-card-bottom-action::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: -20px;
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  border-bottom-right-radius: 20px;
+  box-shadow: 10px 10px 0 10px #0b0b0b;
+}
+.nahid-action-circle-btn {
+  width: 64px;
+  height: 64px;
+  background: #19202e;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--nahid-text-white);
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+.nahid-service-card:hover .nahid-action-circle-btn {
+  background: var(--nahid-accent-orange);
+}
+.nahid-action-circle-btn svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+/* Refined Premium Dot Indicator Animations with color shifting */
+.nahid-services-pagination {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 40px;
+}
+.nahid-services-pagination .nahid-dot {
+  width: 12px;
+  height: 12px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    width 0.4s cubic-bezier(0.25, 1, 0.5, 1),
+    background-color 0.4s ease;
+}
+
+/* Color Shifting Active State Match */
+.nahid-services-pagination .nahid-dot.nahid-active {
+  background-color: var(--nahid-accent-orange);
+  width: 32px;
+  border-radius: 6px;
+}
+
+@media (max-width: 1024px) {
+  .nahid-service-card {
+    flex: 0 0 calc(50% - 15px);
+  }
+  .nahid-services-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+}
+@media (max-width: 680px) {
+  .nahid-service-card {
+    flex: 0 0 100%;
+  }
+  .nahid-services-section .nahid-container {
+    padding: 0 20px;
+  }
+}
+
+/* expertise */
+/* ==========================================
+   TIMELINE WRAPPER BASE CONTEXT
+   ========================================== */
+.nahid-experience-section {
+  background: #ffffff; /* Sleek workspace layout contrast layer */
+  padding: 100px 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  position: relative;
+}
+
+.nahid-exp-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Header Text Alignments Styles Mapping */
+.nahid-exp-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.nahid-exp-main-title {
+  font-size: 2.8rem;
+  font-weight: 700;
+  color: #1e293b; /* Premium dark corporate tint */
+  margin: 0;
+}
+
+.nahid-exp-main-title .accent-orange {
+  color: #f27427; /* Matching design trademark orange tone */
+}
+
+/* ==========================================
+   CORE GRAPH TIMELINE ENGINE
+   ========================================== */
+.nahid-timeline-wrapper {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 60px; /* Precise vertical entry list padding separation */
+}
+
+/* Absolute Dashed Guide Tracker Bar */
+.nahid-timeline-center-line {
+  position: absolute;
+  left: 50%;
+  top: 15px;
+  bottom: 15px;
+  width: 2px;
+  border-left: 2px dashed #94a3b8; /* Dashed line representation */
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+/* Single Modular Entry Node Row Segment */
+.nahid-timeline-item {
+  display: grid;
+  grid-template-columns: 1fr 100px 1fr; /* Exact symmetrical column split spacing */
+  align-items: flex-start;
+  position: relative;
+  z-index: 2;
+}
+
+/* ==========================================
+   LEFT PROPERTY BLOCK (Company & Timeframes)
+   ========================================== */
+.nahid-timeline-left-block {
+  text-align: left;
+  padding-right: 20px;
+}
+
+.nahid-timeline-left-block .company-name {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 8px 0;
+}
+
+.nahid-timeline-left-block .experience-duration {
+  font-size: 1rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* ==========================================
+   CENTER DOT CONSTRUCTORS
+   ========================================== */
+.nahid-timeline-center-dot-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 38px; /* Alignment match framework across headings text base */
+}
+
+.timeline-dot {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  position: relative;
+  display: inline-block;
+  background: #ffffff;
+}
+
+/* Double Concentric Indicator Circles Styles */
+.timeline-dot.orange-pill {
+  background: #f27427;
+  border: 4px solid #ffffff;
+  box-shadow:
+    0 0 0 2px #f27427,
+    0 0 0 5px rgba(242, 116, 37, 0.15);
+}
+
+.timeline-dot.dark-pill {
+  background: #1e293b;
+  border: 4px solid #ffffff;
+  box-shadow:
+    0 0 0 2px #1e293b,
+    0 0 0 5px rgba(30, 41, 59, 0.15);
+}
+
+/* ==========================================
+   RIGHT PROPERTY BLOCK (Role & Descriptions)
+   ========================================== */
+.nahid-timeline-right-block {
+  padding-left: 20px;
+}
+
+.nahid-timeline-right-block .role-designation {
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 12px 0;
+}
+
+.nahid-timeline-right-block .role-desc {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #64748b;
+  margin: 0;
+}
+
+.role-desc.descriptive-blank {
+  margin: 0;
+}
+
+/* ==========================================
+   DYNAMIC RESPONSIVE MATRIX OVERRIDES
+   ========================================== */
+@media (max-width: 991px) {
+  .nahid-timeline-center-line {
+    left: 20px;
+    transform: none;
+  }
+
+  .nahid-timeline-item {
+    grid-template-columns: 1fr; /* Stack layout sequence on tablet or lower */
+    gap: 15px;
+    padding-left: 50px;
+  }
+
+  .nahid-timeline-left-block {
+    padding-right: 0;
+  }
+
+  .nahid-timeline-center-dot-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: auto;
+  }
+
+  .nahid-timeline-right-block {
+    padding-left: 0;
+  }
+
+  .nahid-timeline-left-block .company-name,
+  .nahid-timeline-right-block .role-designation {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .nahid-exp-container {
+    padding: 0 20px;
+  }
+  .nahid-exp-main-title {
+    font-size: 2rem;
+  }
+}
+
+/*  */
+/* ==========================================
+   WHY HIRE ME SYSTEM BASE CONTEXT
+   ========================================== */
+.nahid-hire-section {
+  background: #f8fafc; /* Clean, minimal workflow canvas light frame */
+  padding: 120px 0;
+  font-family:
+    "Inter",
+    -apple-system,
+    sans-serif;
+  overflow: hidden;
+}
+
+.nahid-hire-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr; /* Symmetrical column focus grouping split */
+  align-items: center;
+  gap: 80px;
+}
+
+/* ==========================================
+   LEFT COMPONENT LAYER: BACKGROUND VEIL VECTOR
+   ========================================== */
+.nahid-hire-media-wrapper {
+  position: relative;
+  width: 100%;
+  height: 480px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Image_c7cc7e.jpg signature rounded corner frame replica */
+.nahid-asymmetric-bg-card {
+  position: absolute;
+  width: 320px;
+  height: 380px;
+  background: #fca5a5; /* Smooth elegant pastel tone backdrop vector grid */
+  border-radius: 120px 40px 120px 120px; /* Precise asymmetric boundary vectors curve */
+  z-index: 1;
+  transform: rotate(-3deg);
+}
+
+.nahid-hire-avatar {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  max-height: 460px;
+  object-fit: contain;
+  transform: translateY(-10px);
+}
+
+/* ==========================================
+   RIGHT COMPONENT LAYER: SUMMARY MAPPINGS
+   ========================================== */
+.nahid-hire-content-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+.nahid-hire-main-title {
+  font-size: 3rem;
+  font-weight: 700;
+  color: #1e293b;
+  margin: 0 0 24px 0;
+  letter-spacing: -1px;
+}
+
+.nahid-hire-main-title span.accent-orange {
+  color: #f07624; /* Core global orange standard validation tone */
+}
+
+.nahid-hire-description {
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: #64748b;
+  margin: 0 0 40px 0;
+  max-width: 500px;
+}
+
+/* Statistics Grid Matrix Mapping Alignment */
+.nahid-stats-grid-track {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+  margin-bottom: 45px;
+}
+
+.nahid-stat-card-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.nahid-stat-card-item .stat-counter-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.nahid-stat-card-item .stat-counter-label {
+  font-size: 1rem;
+  color: #94a3b8;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* ==========================================
+   INTERACTIVE WORKSPACE PILL CTA LINK
+   ========================================== */
+.nahid-btn-pill-outline {
+  display: inline-block;
+  padding: 16px 48px;
+  border: 1.5px solid #0f172a;
+  background: transparent;
+  color: #0f172a;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 20px; /* Soft geometric capsule bounding boxes */
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: center;
+}
+
+.nahid-btn-pill-outline:hover {
+  background: #0f172a;
+  color: #ffffff;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.15);
+}
+
+/* ==========================================
+   RESPONSIVE RENDERING PARAMETERS CONTROLS
+   ========================================== */
+@media (max-width: 991px) {
+  .nahid-hire-container {
+    grid-template-columns: 1fr;
+    gap: 60px;
+    text-align: center;
+  }
+  .nahid-hire-description {
+    margin: 0 auto 40px auto;
+  }
+  .nahid-stats-grid-track {
+    justify-content: center;
+    gap: 50px;
+  }
+  .nahid-asymmetric-bg-card {
+    width: 280px;
+    height: 340px;
+  }
+}
+
+@media (max-width: 480px) {
+  .nahid-hire-container {
+    padding: 0 20px;
+  }
+  .nahid-hire-main-title {
+    font-size: 2.2rem;
+  }
+  .nahid-stats-grid-track {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}
+
+
+/*  */
