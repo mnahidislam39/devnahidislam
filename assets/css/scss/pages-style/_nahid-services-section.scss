@@ -34,7 +34,7 @@
   }
 
   .nahid-services-subtitle {
-    color: var(--text-muted);
+    color: var(--text-light);
     max-width: 480px;
     font-size: 0.95rem;
     line-height: 1.6;
@@ -97,13 +97,17 @@
     margin-top: 40px;
     display: flex;
     justify-content: center;
+    img {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-radius: 18px;
+    }
   }
 
   .nahid-mockup-layer {
     position: absolute;
     width: -webkit-fill-available;
     height: -webkit-fill-available;
-    border-radius: 18px;
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
     transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
   }

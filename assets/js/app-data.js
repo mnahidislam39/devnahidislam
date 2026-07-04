@@ -59,7 +59,7 @@ const nahidHeroConfig = {
   },
   stats: {
     stars: "★★★★★",
-    years: "2 Years",
+    years: "2 Years+ ",
     label: "Experience",
   },
   decorations: {
@@ -69,19 +69,18 @@ const nahidHeroConfig = {
 
 // Services Data
 const nahidServicesMeta = {
-  sectionTitle: "My",
-  accentText: "Services",
+  sectionTitle: "What",
+  accentText: "I Offer",
   sectionSubtitle:
-    "Comprehensive development services to bring your digital vision to life, from concept to deployment and beyond.",
+    "High-performance web applications and custom digital engineering tailored to streamline your business operations, automate workflows, and drive measurable revenue growth.",
 };
-// Services Data
 const nahidServicesData = [
   {
     id: 1,
     title: "Web Development",
     customClass: "nahid-card-web-development",
     serviceType: "dev-web",
-    mainImg: "assets/images/education/edu-m-1.jpg",
+    mainImg: "assets/images/services/web-development.jpg",
     bgImg1: "assets/images/education/edu-FP-1.png",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
@@ -91,7 +90,7 @@ const nahidServicesData = [
     title: "WordPress Development",
     customClass: "nahid-card-wordpress",
     serviceType: "dev-wordpress",
-    mainImg: "assets/images/education/edu-m-2.jpg",
+    mainImg: "assets/images/services/wordPress-development.jpg",
     bgImg1: "assets/images/education/edu-FP-2.png",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
@@ -101,7 +100,7 @@ const nahidServicesData = [
     title: "E-Commerce Solutions",
     customClass: "nahid-card-ecommerce",
     serviceType: "dev-ecommerce",
-    mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=E-Commerce+3",
+    mainImg: "assets/images/services/ecommerce-solutions.jpg",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
@@ -111,29 +110,37 @@ const nahidServicesData = [
     title: "Shopify Development",
     customClass: "nahid-card-shopify",
     serviceType: "dev-shopify",
-    mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=Shopify+4",
+    mainImg: "assets/images/services/shopify-dev.jpg",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
   },
   {
     id: 5,
-    title: "Maintenance & Support",
-    customClass: "nahid-card-maintenance",
-    serviceType: "dev-maintenance",
-    mainImg:
-      "https://via.placeholder.com/260x360/f27427/fff?text=Maintenance+5",
+    title: "Shopify APP Development",
+    customClass: "nahid-card-shopify",
+    serviceType: "dev-shopify",
+    mainImg: "assets/images/services/shopify-app.jpg",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
   },
   {
     id: 6,
+    title: "Maintenance & Support",
+    customClass: "nahid-card-maintenance",
+    serviceType: "dev-maintenance",
+    mainImg: "assets/images/services/maintenance-support.jpg",
+    bgImg1: "https://via.placeholder.com/260x360/333/fff",
+    bgImg2: "https://via.placeholder.com/260x360/222/fff",
+    link: "#",
+  },
+  {
+    id: 7,
     title: "API Integration",
     customClass: "nahid-card-api",
     serviceType: "dev-api",
-    mainImg:
-      "https://via.placeholder.com/260x360/f27427/fff?text=Maintenance+5",
+    mainImg: "assets/images/services/api-img.jpg",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
@@ -509,13 +516,11 @@ const nahidWorkflowData = [
   },
 ];
 
-// ==========================================
-// NAHID FOOTER SECTION CONFIGURATION & DATA
-// ==========================================
+// fotter configuration
 const nahidFooterConfig = {
   connectBanner: {
-    title: "Lets Connect there",
-    buttonText: "Hire me",
+    title: "Let's Work Together",
+    buttonText: "GET IN TOUCH",
   },
   brand: {
     logoText: "JCREA", // আপনার টিম বা নিজের লোগো টেক্সট
