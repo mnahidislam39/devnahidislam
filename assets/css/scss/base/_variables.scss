@@ -1,0 +1,37 @@
+// 1. Core Colors (Brand Colors)
+$primary: #00bf63; // Apnar green brand color
+$secondary: #051d40;
+$white: #ffffff;
+$black: #000000;
+$navy-dark: #0a192f;
+$gray-light: #f8f9fa;
+$gray-text: #64748b;
+
+// 2. Functional Color Mapping (Local Names)
+$text-color: $secondary;
+$process-blue: $primary;
+$slate-text: $gray-text;
+$border-color: rgba(0, 0, 0, 0.1);
+
+// 3. Typography
+$font-primary: "Poppins", sans-serif;
+$font-base: 16px;
+$line-height: 1.6;
+
+// 4. Viewport / Breakpoints (Standard Sizes)
+$sm-width: 576px;
+$md-width: 768px;
+$lg-width: 992px;
+$xl-width: 1200px;
+$xxl-width: 1400px;
+
+// 5. Layout & Spacing
+$container-max: 1440px;
+$section-padding: 80px 0;
+$mobile-padding: 50px 0;
+
+// 6. Transitions & Effects
+$transition: all 0.3s ease;
+$shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+$shadow-md: 0 4px 12px rgba(0, 0, 0, 0.1);
+$border-radius: 8px;

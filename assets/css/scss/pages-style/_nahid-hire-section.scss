@@ -1,0 +1,171 @@
+@use "sass:color";
+@use "../base/variables" as *;
+@use "../utilities/mixin" as *;
+.nahid-hire-section {
+  padding: 120px 0;
+  background-color: var(--light-bg);
+  font-family: var(--font-family);
+  overflow: hidden;
+
+  .nahid-hire-container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 40px;
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    align-items: center;
+    gap: 80px;
+  }
+
+  /* ==========================================
+     LEFT COMPONENT LAYER: BACKGROUND VEIL VECTOR
+     ========================================== */
+  .nahid-hire-media-wrapper {
+    position: relative;
+    width: 100%;
+    height: 480px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nahid-asymmetric-bg-card {
+    position: absolute;
+    width: 320px;
+    height: 380px;
+    background: var(--primary-color);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 120px 40px 120px 120px;
+    z-index: 1;
+    transform: rotate(-3deg);
+  }
+
+  .nahid-hire-avatar {
+    position: relative;
+    z-index: 2;
+    height: 100%;
+    max-height: 460px;
+    object-fit: contain;
+    transform: translateY(-10px);
+  }
+
+  /* ==========================================
+     RIGHT COMPONENT LAYER: SUMMARY MAPPINGS
+     ========================================== */
+  .nahid-hire-content-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nahid-hire-main-title {
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0 0 24px 0;
+    letter-spacing: -1px;
+
+    span.accent-orange {
+      color: var(--primary-color);
+    }
+  }
+
+  .nahid-hire-description {
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--text-muted);
+    margin: 0 0 40px 0;
+    max-width: 500px;
+  }
+
+  /* Statistics Grid Matrix Mapping Alignment */
+  .nahid-stats-grid-track {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    margin-bottom: 45px;
+  }
+
+  .nahid-stat-card-item {
+    display: flex;
+    flex-direction: column;
+
+    .stat-counter-number {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin: 0 0 6px 0;
+    }
+
+    .stat-counter-label {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin: 0;
+    }
+  }
+
+  /* ==========================================
+     INTERACTIVE WORKSPACE PILL CTA LINK
+     ========================================== */
+  .nahid-btn-pill-outline {
+    display: inline-block;
+    padding: 16px 48px;
+    border: 1.5px solid var(--secondary-color);
+    background: transparent;
+    color: var(--secondary-color);
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 20px;
+    transition: var(--transition-smooth);
+    text-align: center;
+
+    &:hover {
+      background: var(--primary-color);
+      border-color: var(--primary-color);
+      color: var(--secondary-color);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(255, 122, 48, 0.2);
+    }
+  }
+
+  /* ==========================================
+     RESPONSIVE RENDERING PARAMETERS CONTROLS
+     ========================================== */
+  @media (max-width: 991px) {
+    .nahid-hire-container {
+      grid-template-columns: 1fr;
+      gap: 60px;
+      text-align: center;
+    }
+
+    .nahid-hire-description {
+      margin: 0 auto 40px auto;
+    }
+
+    .nahid-stats-grid-track {
+      justify-content: center;
+      gap: 50px;
+    }
+
+    .nahid-asymmetric-bg-card {
+      width: 280px;
+      height: 340px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nahid-hire-container {
+      padding: 0 20px;
+    }
+
+    .nahid-hire-main-title {
+      font-size: 2.2rem;
+    }
+
+    .nahid-stats-grid-track {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+  }
+}

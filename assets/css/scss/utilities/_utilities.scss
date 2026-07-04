@@ -1,0 +1,6 @@
+/* -----------------------------------------------------------
+   Global Utilities Ordering (The Logic Hub)
+   ----------------------------------------------------------- */
+
+@forward "functions"; // 1. Functions (Shobar age, karon mixin eita use korbe)
+@forward "mixin"; // 2. Mixins (Responsive mq, flex, etc.)

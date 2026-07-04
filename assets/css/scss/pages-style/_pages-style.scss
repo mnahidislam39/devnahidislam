@@ -1,0 +1,17 @@
+/* -----------------------------------------------------------
+   Home Page Sections Ordering
+   ----------------------------------------------------------- */
+
+@forward "main-header"; // 1. Hero section
+@forward "hero-section"; // 2. About me section
+@forward "nahid-services-section"; // 3. Services you provide
+@forward "nahid-experience-section"; // 4. Experience section
+@forward "nahid-hire-section"; // 5. Hire me section
+@forward "portfolio-section"; // 6. Portfolio section
+@forward "testimonial-section"; // 7. Testimonial section
+@forward "cta-contact-section"; // 8.  CTA section
+@forward "nahid-marquee-section"; // 9. Marquee section
+@forward "pricing-section"; // 10. Pricing section
+@forward "nahid-faq-section"; // 11. FAQ section
+@forward "nahid-workflow-section"; // 12. Workflow section
+@forward "nahid-main-footer"; // 13. Main footer

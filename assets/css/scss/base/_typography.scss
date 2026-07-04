@@ -1,0 +1,135 @@
+@use "sass:list";
+@use "../base/variables" as *;
+
+/* Responsive Typography setup */
+/* Ekhane shob headling ebong paragraph er font size, weight ar line-height define kora hoyeche */
+$fonts_config: (
+  "h1": (
+    56px,
+    36px,
+    1.2,
+    700,
+  ),
+  "h2": (
+    48px,
+    32px,
+    1.2,
+    600,
+  ),
+  "h3": (
+    40px,
+    28px,
+    1.3,
+    500,
+  ),
+  "h4": (
+    32px,
+    24px,
+    1.3,
+    500,
+  ),
+  "h5": (
+    24px,
+    20px,
+    1.4,
+    400,
+  ),
+  "h6": (
+    20px,
+    18px,
+    1.4,
+    400,
+  ),
+  "p": (
+    16px,
+    16px,
+    1.6,
+    400,
+  ),
+);
+
+/* Heading and Paragraph generation loop */
+/* Ei loop ta fonts_config map theke data niye auto CSS generate korbe ebong mobile er jonno responsive size set korbe */
+@each $name, $values in $fonts_config {
+  #{$name} {
+    font-size: list.nth($values, 1);
+    line-height: list.nth($values, 3);
+    font-weight: list.nth($values, 4);
+    font-family: $font-primary;
+
+    @media (max-width: $md-width) {
+      font-size: list.nth($values, 2);
+    }
+  }
+}
+
+/* Layout Utilities */
+/* Prottekta element er display property set korar jonno ei short utility classes gulo banano hoyeche */
+$display_list: block, inline-block, flex, grid, none;
+@each $val in $display_list {
+  .d-#{$val} {
+    display: $val;
+  }
+}
+
+/* Flexbox Justify Content helpers */
+/* Flex container er bhitor kothay element thakbe seta define korar short classes */
+$justify_list: (
+  "center": center,
+  "between": space-between,
+  "around": space-around,
+  "start": flex-start,
+  "end": flex-end,
+);
+@each $key, $val in $justify_list {
+  .justify-#{$key} {
+    justify-content: $val;
+  }
+}
+
+/* Flexbox Align Items helpers */
+/* Verticaly element align korar jonno ei utility gulo use kora hoy */
+$align_list: (
+  "center": center,
+  "start": flex-start,
+  "end": flex-end,
+);
+@each $key, $val in $align_list {
+  .align-#{$key} {
+    align-items: $val;
+  }
+}
+
+/* Position Utilities */
+/* Quick position set korar jonno relative ebong absolute class */
+.pos-relative {
+  position: relative;
+}
+.pos-absolute {
+  position: absolute;
+}
+
+/* Text Alignment utilities */
+/* Text k center, left ba right a nite ei loop ta class generate kore */
+@each $val in start, center, end {
+  .text-#{$val} {
+    text-align: $val;
+  }
+}
+
+/* Text Transform utilities */
+/* Text k boro hater ba shob chhoto hater korar jonno ei classes */
+@each $val in lowercase, capitalize, uppercase {
+  .text-#{$val} {
+    text-transform: $val;
+  }
+}
+
+/* Decoration helpers */
+/* Link er niche underline thakbe ki thakbe na seta control korar jonno */
+.none {
+  text-decoration: none;
+}
+.underline {
+  text-decoration: underline;
+}

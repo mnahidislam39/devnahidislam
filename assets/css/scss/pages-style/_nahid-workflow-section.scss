@@ -1,0 +1,122 @@
+@use "sass:color";
+@use "../base/variables" as *;
+@use "../utilities/mixin" as *;
+
+.nahid-workflow-section {
+  padding: 100px 24px;
+  font-family: var(--font-family);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  .workflow-container {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  .workflow-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .workflow-title {
+    font-size: 42px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    letter-spacing: -1px;
+
+    span {
+      color: var(--primary-color);
+    }
+  }
+
+  .workflow-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+  }
+
+  .workflow-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    transition: var(--transition-smooth);
+
+    &:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary-color);
+      box-shadow: 0 15px 35px rgba(255, 122, 48, 0.05);
+    }
+  }
+
+  .workflow-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .workflow-step-num {
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--primary-color);
+    background: rgba(255, 122, 48, 0.1);
+    padding: 4px 14px;
+    border-radius: 100px;
+  }
+
+  .workflow-icon-box {
+    width: 44px;
+    height: 44px;
+    color: var(--secondary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-smooth);
+
+    svg {
+      width: 28px;
+      height: 28px;
+    }
+  }
+
+  .workflow-card:hover .workflow-icon-box {
+    color: var(--primary-color);
+  }
+
+  .workflow-step-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0 0 12px 0;
+  }
+
+  .workflow-step-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    margin: 0;
+  }
+
+  @media (max-width: 1024px) {
+    .workflow-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .workflow-title {
+      font-size: 32px;
+    }
+
+    .workflow-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .workflow-card {
+      padding: 24px;
+    }
+  }
+}

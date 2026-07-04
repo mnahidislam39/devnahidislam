@@ -1,0 +1,18 @@
+// 1. External/Built-in Modules
+@use "sass:math";
+@use "sass:color";
+
+// 2. Utilities (The Engine)
+@use "./scss/utilities/utilities";
+
+// 3. Core Base (The Foundation)
+@use "./scss/base/base";
+
+// 4. Layout (The Skeleton)
+@use "./scss/layouts/layouts";
+
+// 5. UI Components (Reusable Elements)
+@use "./scss/components/components";
+
+// 6. Pages (Specific Sections)
+@use "./scss/pages-style/pages-style";

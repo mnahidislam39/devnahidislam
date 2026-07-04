@@ -1,0 +1,179 @@
+@use "sass:color";
+@use "../base/variables" as *;
+@use "../utilities/mixin" as *;
+
+.nahid-experience-section {
+  // background: var(--dark-bg);
+  padding: 100px 0;
+  font-family: var(--font-family);
+  position: relative;
+
+  .nahid-exp-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px;
+  }
+
+  .nahid-exp-header {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .nahid-exp-main-title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: var(--secondary-color);
+    margin: 0;
+
+    .accent-orange {
+      color: var(--primary-color);
+    }
+  }
+
+  .nahid-timeline-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .nahid-timeline-center-line {
+    position: absolute;
+    left: 50%;
+    top: 15px;
+    bottom: 15px;
+    width: 2px;
+    border-left: 2px dashed rgba(255, 255, 255, 0.2);
+    transform: translateX(-50%);
+    z-index: 1;
+  }
+
+  .nahid-timeline-item {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    align-items: flex-start;
+    position: relative;
+    z-index: 2;
+  }
+
+  .nahid-timeline-left-block {
+    text-align: left;
+    padding-right: 20px;
+
+    .company-name {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin: 0 0 8px 0;
+    }
+
+    .experience-duration {
+      font-size: 1rem;
+      color: var(--text-muted);
+      font-weight: 500;
+    }
+  }
+
+  .nahid-timeline-center-dot-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 38px;
+  }
+
+  .timeline-dot {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    position: relative;
+    display: inline-block;
+    background: var(--secondary-color);
+
+    &.orange-pill {
+      background: var(--primary-color);
+      border: 4px solid var(--dark-bg);
+      box-shadow:
+        0 0 0 2px var(--primary-color),
+        0 0 0 5px rgba(255, 122, 48, 0.15);
+    }
+
+    &.dark-pill {
+      background: var(--secondary-color);
+      border: 4px solid var(--dark-bg);
+      box-shadow:
+        0 0 0 2px var(--secondary-color),
+        0 0 0 5px rgba(255, 255, 255, 0.15);
+    }
+  }
+
+  .nahid-timeline-right-block {
+    padding-left: 20px;
+
+    .role-designation {
+      font-size: 1.65rem;
+      font-weight: 700;
+      color: var(--secondary-color);
+      margin: 0 0 12px 0;
+    }
+
+    .role-desc {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+      margin: 0;
+
+      &.descriptive-blank {
+        margin: 0;
+      }
+    }
+  }
+
+  @media (max-width: 991px) {
+    .nahid-timeline-center-line {
+      left: 20px;
+      transform: none;
+    }
+
+    .nahid-timeline-item {
+      grid-template-columns: 1fr;
+      gap: 15px;
+      padding-left: 50px;
+    }
+
+    .nahid-timeline-left-block {
+      padding-right: 0;
+
+      .company-name {
+        font-size: 1.4rem;
+      }
+    }
+
+    .nahid-timeline-center-dot-box {
+      position: absolute;
+      left: 0;
+      top: 0;
+      height: auto;
+    }
+
+    .nahid-timeline-right-block {
+      padding-left: 0;
+
+      .role-designation {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  @media (max-width: 480px) {
+    .nahid-exp-container {
+      padding: 0 20px;
+    }
+
+    .nahid-exp-main-title {
+      font-size: 2rem;
+    }
+  }
+}
+// Responsive Design
+@media (max-width: $lg-width) {
+}

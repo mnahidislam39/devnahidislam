@@ -1,0 +1,63 @@
+@use "../base/variables" as *;
+
+/* Main Button Component */
+/* Shob button er jonno common style jemon: padding, radius ebong transition ekhane define kora */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  padding: 0.8rem 1.8rem;
+  border-radius: $border-radius;
+  transition: $transition;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  /* Primary Button style */
+  /* Main brand color er button, jeta hover korle halka dark hobe ebong upore uthbe */
+  &.btn-primary {
+    background-color: $primary;
+    color: $white;
+    &:hover {
+      background-color: $secondary;
+      transform: translateY(-2px);
+      box-shadow: $shadow-md;
+    }
+  }
+
+  /* Outline/Border Button style */
+  /* Sudhu border thakbe emon button, hover korle background color vore jabe */
+  &.btn-border {
+    background-color: transparent;
+    border-color: $secondary;
+    color: $secondary;
+    &:hover {
+      background-color: $secondary;
+      color: $white;
+      transform: translateY(-2px);
+    }
+  }
+
+  /* Secondary Button style */
+  /* Alternate color button jeta website er onno kono kajer jonno lagte pare */
+  &.btn-secondary {
+    background-color: $secondary;
+    color: $white;
+    &:hover {
+      background-color: $secondary;
+    }
+  }
+
+  /* Button Sizes */
+  /* Chhoto ebong boro size er button bananor jonno utility classes */
+  &.btn-sm {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+  &.btn-lg {
+    padding: 1.2rem 2.5rem;
+    font-size: 1.2rem;
+  }
+}

@@ -1,0 +1,84 @@
+@use "sass:math";
+@use "../base/variables" as *;
+@use "../utilities/mixin" as *;
+/* -----------------------------------------------------------
+   1. Container & Row Setup
+   ----------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: $container-max;
+  margin: 0 auto;
+  padding: 0 15px; // Interior content padding
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15px;
+}
+
+/* 2. Column Setup */
+[class*="col-"] {
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+  flex: 0 0 auto;
+}
+
+/* 3. Grid & Font Mixin */
+@mixin make-grid($prefix, $base-font) {
+  html {
+    font-size: $base-font;
+  }
+  @for $i from 1 through 12 {
+    .col-#{$prefix}-#{$i} {
+      width: math.div(100, 12) * $i * 1%;
+      padding: 0 15px;
+    }
+  }
+}
+
+/* 4. Responsive Breakpoints (Using MQ for 0.02px Safety) */
+
+// Mobile (XS)
+@include make-grid("xs", 14px);
+
+// Small (sm) - 576px
+@include mq(sm) {
+  .container {
+    max-width: ($sm-width - 5px); // 571px
+  }
+  @include make-grid("sm", 15px);
+}
+
+// Medium (md) - 768px
+@include mq(md) {
+  .container {
+    max-width: ($md-width - 5px); // 763px
+  }
+  @include make-grid("md", 16px);
+}
+
+// Large (lg) - 992px
+@include mq(lg) {
+  .container {
+    max-width: ($lg-width - 5px); // 987px
+  }
+  @include make-grid("lg", 16px);
+}
+
+// Extra Large (xl) - 1200px
+@include mq(xl) {
+  .container {
+    max-width: ($xl-width - 5px); // 1195px
+  }
+  @include make-grid("xl", 17px);
+}
+
+// XXL - 1440px
+@include mq(xxl) {
+  .container {
+    max-width: (1440px - 5px); // 1435px
+  }
+  @include make-grid("xxl", 18px);
+}

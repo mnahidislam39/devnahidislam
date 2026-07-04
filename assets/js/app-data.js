@@ -78,37 +78,37 @@ const nahidServicesMeta = {
 const nahidServicesData = [
   {
     id: 1,
-    title: "UI/ UX Design",
-    customClass: "nahid-card-uiux",
-    serviceType: "design-uiux",
-    mainImg: "assets/images/grow-your-business.webp",
-    bgImg1: "https://via.placeholder.com/260x360/333/fff",
+    title: "Web Development",
+    customClass: "nahid-card-web-development",
+    serviceType: "dev-web",
+    mainImg: "assets/images/education/edu-m-1.jpg",
+    bgImg1: "assets/images/education/edu-FP-1.png",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
   },
   {
     id: 2,
-    title: "Web Design",
-    customClass: "nahid-card-webdesign",
-    serviceType: "design-web",
-    mainImg: "assets/images/grow-your-business.webp",
-    bgImg1: "https://via.placeholder.com/260x360/333/fff",
+    title: "WordPress Development",
+    customClass: "nahid-card-wordpress",
+    serviceType: "dev-wordpress",
+    mainImg: "assets/images/education/edu-m-2.jpg",
+    bgImg1: "assets/images/education/edu-FP-2.png",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
   },
   {
     id: 3,
-    title: "Landing Page",
-    customClass: "nahid-card-landing",
-    serviceType: "dev-landing",
-    mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=Landing+3",
+    title: "E-Commerce Solutions",
+    customClass: "nahid-card-ecommerce",
+    serviceType: "dev-ecommerce",
+    mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=E-Commerce+3",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
   },
   {
     id: 4,
-    title: "Shopify Dev",
+    title: "Shopify Development",
     customClass: "nahid-card-shopify",
     serviceType: "dev-shopify",
     mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=Shopify+4",
@@ -118,10 +118,22 @@ const nahidServicesData = [
   },
   {
     id: 5,
-    title: "Custom App",
-    customClass: "nahid-card-customapp",
-    serviceType: "dev-app",
-    mainImg: "https://via.placeholder.com/260x360/f27427/fff?text=App+5",
+    title: "Maintenance & Support",
+    customClass: "nahid-card-maintenance",
+    serviceType: "dev-maintenance",
+    mainImg:
+      "https://via.placeholder.com/260x360/f27427/fff?text=Maintenance+5",
+    bgImg1: "https://via.placeholder.com/260x360/333/fff",
+    bgImg2: "https://via.placeholder.com/260x360/222/fff",
+    link: "#",
+  },
+  {
+    id: 6,
+    title: "API Integration",
+    customClass: "nahid-card-api",
+    serviceType: "dev-api",
+    mainImg:
+      "https://via.placeholder.com/260x360/f27427/fff?text=Maintenance+5",
     bgImg1: "https://via.placeholder.com/260x360/333/fff",
     bgImg2: "https://via.placeholder.com/260x360/222/fff",
     link: "#",
@@ -188,6 +200,11 @@ const nahidHireStats = [
 // ==========================================
 // NAHID PORTFOLIO GLOBAL CONFIGURATION
 // ==========================================
+const nahidPortfolioMeta = {
+  sectionTitle: "My",
+  accentText: "Portfolio",
+  sectionSubtitle: "See All",
+};
 const nahidPortfolioConfig = {
   loop: true,
   autoplay: true,
@@ -201,7 +218,7 @@ const nahidPortfolioData = [
     id: 1,
     title: "Fotocademia - E-commerce Platform",
     watermark: "Fotocademia",
-    image: "assets/images/grow-axit-businessdRK.webp",
+    image: "assets/images/education/edu-FP-1.png",
     link: "#",
     tags: ["Shopify", "UI/UX Design", "E-commerce", "Minimalist"],
     description:
@@ -332,23 +349,39 @@ const nahidCtaConfig = {
   },
 };
 
-// ==========================================
-// NAHID TILTED MARQUEE CONFIGURATION & DATA
-// ==========================================
+// marquee section configuration
 const nahidMarqueeConfig = {
-  // মার্কির স্পার্কল/স্টার আইকন (SVG)
-  separatorIconSvg: `<svg viewBox="0 0 24 24" fill="#ff7a30" width="24" height="24" class="marquee-star">
-    <path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/>
-  </svg>`,
-
-  // ডাইনামিক মার্কি টেক্সট লিস্ট
   items: [
-    "UX Design",
-    "App Design",
-    "Dashboard",
-    "Wireframe",
-    "User Research",
-    "Visual Identity",
+    {
+      text: "UX Design",
+      iconColor: "#ff7a30",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
+    {
+      text: "App Design",
+      iconColor: "#00ffcc",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
+    {
+      text: "Dashboard",
+      iconColor: "#ff007f",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
+    {
+      text: "Wireframe",
+      iconColor: "#ffcc00",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
+    {
+      text: "User Research",
+      iconColor: "#3385ff",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
+    {
+      text: "Visual Identity",
+      iconColor: "#a020f0",
+      svg: `<svg viewBox="0 0 24 24" width="24" height="24" class="marquee-star"><path d="M12 2l2.4 7.2L22 11.6l-5.6 4.4L17.8 22 12 18.4 6.2 22l1.4-6-5.6-4.4 7.6-2.4z"/></svg>`,
+    },
   ],
 };
 

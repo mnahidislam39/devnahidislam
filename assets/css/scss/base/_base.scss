@@ -1,0 +1,6 @@
+/* -----------------------------------------------------------
+   Base Foundation Ordering
+   ----------------------------------------------------------- */
+@forward "variables"; // 1. Variables (Shobar age, jate baki shob file color/font pay)
+@forward "reset"; // 2. Reset (Variables load hobar por browser default reset hobe)
+@forward "typography"; // 3. Typography (Reset hobar por h1, p er style boshabe)

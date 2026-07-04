@@ -1,0 +1,124 @@
+@use "sass:math";
+@use "../base/variables" as *;
+
+/* mq mane Media Query. 0.02px gap rakha hoyeche jate overlap na hoy */
+@mixin mq($size) {
+  // --- Max-Width Logics (Soto screen er jonno) ---
+  @if $size == sm-down {
+    @media (max-width: ($sm-width - 0.01px)) {
+      @content;
+    }
+  } @else if $size == md-down {
+    @media (max-width: ($md-width - 0.01px)) {
+      @content;
+    }
+  } @else if $size == lg-down {
+    @media (max-width: ($lg-width - 0.01px)) {
+      @content;
+    }
+  } @else if $size == xl-down {
+    @media (max-width: ($xl-width - 0.01px)) {
+      @content;
+    }
+  }
+
+  // --- Min-Width Logics (Boro screen er jonno) ---
+  @else if $size == sm {
+    @media (min-width: $sm-width) {
+      @content;
+    }
+  } @else if $size == md {
+    @media (min-width: $md-width) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (min-width: $lg-width) {
+      @content;
+    }
+  } @else if $size == xl {
+    @media (min-width: $xl-width) {
+      @content;
+    }
+  } @else if $size == xxl {
+    @media (min-width: 1440px) {
+      @content;
+    }
+  }
+}
+
+/* -----------------------------------------------------------
+   2. Design & Layout Mixins
+   ----------------------------------------------------------- */
+
+/* Border Mixin */
+@mixin border(
+  $width: 1px,
+  $style: solid,
+  $color: var(--primary-color),
+  $radius: 0
+) {
+  border: $width $style $color;
+  border-radius: $radius;
+}
+
+/* Background Image */
+@mixin background-image($img-path) {
+  background-image: url("#{$img-path}");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+/* Padding & Margin (Shorthand) */
+@mixin padding($values...) {
+  padding: $values;
+}
+@mixin margin($values...) {
+  margin: $values;
+}
+
+/* Axis Helpers */
+@mixin py($top, $bottom: $top) {
+  padding-top: $top;
+  padding-bottom: $bottom;
+}
+@mixin px($left, $right: $left) {
+  padding-left: $left;
+  padding-right: $right;
+}
+@mixin my($top, $bottom: $top) {
+  margin-top: $top;
+  margin-bottom: $bottom;
+}
+@mixin mx($left, $right: $left) {
+  margin-left: $left;
+  margin-right: $right;
+}
+
+/* Size Utility */
+@mixin wh($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+/* Flexbox Center */
+@mixin flex-center($direction: row) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: center;
+  align-items: center;
+}
+
+/* -----------------------------------------------------------
+   3. Grid & Font Mixin
+   ----------------------------------------------------------- */
+@mixin make-grid($prefix, $base-font) {
+  html {
+    font-size: $base-font;
+  }
+  @for $i from 1 through 12 {
+    .col-#{$prefix}-#{$i} {
+      width: math.div(100, 12) * $i * 1%;
+    }
+  }
+}

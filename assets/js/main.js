@@ -473,6 +473,30 @@ function renderNahidDynamicPortfolio() {
   const dynamicProjectLink = document.getElementById("dynamicProjectLink");
   const contentArea = document.getElementById("dynamicContentArea");
 
+  // ==========================================
+  // 🔥 app-data.js থেকে হেডার টেক্সট ডাইনামিক করার লজিক
+  // ==========================================
+  const metaData =
+    typeof nahidPortfolioMeta !== "undefined" ? nahidPortfolioMeta : null;
+
+  const headerMainTitle = document.getElementById("portfolioMainTitle");
+  const headerAccentTitle = document.getElementById("portfolioAccentTitle");
+  const headerSeeAllBtn = document.getElementById("portfolioSeeAllBtn");
+
+  if (metaData) {
+    if (headerMainTitle && metaData.sectionTitle) {
+      // এটি স্প্যান (<span>) ট্যাগ না ভেঙে শুধু শুরুর টেক্সট ("My") চেঞ্জ করবে
+      headerMainTitle.childNodes[0].textContent = metaData.sectionTitle + " ";
+    }
+    if (headerAccentTitle && metaData.accentText) {
+      headerAccentTitle.textContent = metaData.accentText;
+    }
+    if (headerSeeAllBtn && metaData.sectionSubtitle) {
+      headerSeeAllBtn.textContent = metaData.sectionSubtitle;
+    }
+  }
+  // ==========================================
+
   if (projectsData.length === 0 || !slider || !pagination) return;
 
   const slidesPerView = config.slidesPerView || 2;
@@ -1072,7 +1096,7 @@ function initNahidFullyDynamicSlider() {
 
   buildSlider();
 }
-
+// initialize Nahid Dynamic CTA Section
 function initNahidDynamicCtaSection() {
   const config = typeof nahidCtaConfig !== "undefined" ? nahidCtaConfig : null;
   if (!config) return;
@@ -1156,6 +1180,7 @@ function initNahidDynamicCtaSection() {
   }
 }
 
+// marquee engine for Nahid Tilted Marquee Section
 function initNahidTiltedMarquee() {
   const config =
     typeof nahidMarqueeConfig !== "undefined" ? nahidMarqueeConfig : null;
@@ -1163,37 +1188,37 @@ function initNahidTiltedMarquee() {
 
   if (!config || !track || !config.items || config.items.length === 0) return;
 
-  const starIcon = config.separatorIconSvg || "✦";
-
-  // একটি কমপ্লিট সেট তৈরি করার হেল্পার ফাংশন
   function createMarqueeSet(itemsArray) {
     const setContainer = document.createElement("div");
     setContainer.classList.add("marquee-set");
 
-    itemsArray.forEach((itemText) => {
-      // টেক্সট নোড
-      const textSpan = document.createElement("span");
-      textSpan.classList.add("marquee-text");
-      textSpan.textContent = itemText;
+    setContainer.innerHTML = itemsArray
+      .map((item) => {
+        // SVG ট্যাগের ভেতরে আমাদের নিজস্ব ক্লাসটি পুশ করে দিচ্ছি যেন CSS এটাকে ফোর্স করতে পারে
+        let svgContent = item.svg || "✦";
+        if (item.svg && item.svg.includes("<svg")) {
+          svgContent = item.svg.replace(
+            "<svg",
+            `<svg class="custom-marquee-svg" style="color: ${item.iconColor || "#ff7a30"}; fill: ${item.iconColor || "#ff7a30"};"`,
+          );
+        }
 
-      // আইকন নোড
-      const iconSpan = document.createElement("span");
-      iconSpan.classList.add("marquee-icon-wrap");
-      iconSpan.innerHTML = starIcon;
-
-      setContainer.appendChild(textSpan);
-      setContainer.appendChild(iconSpan);
-    });
+        return `
+        <span class="marquee-text">${item.text}</span>
+        <span class="marquee-icon-wrap">${svgContent}</span>
+      `;
+      })
+      .join("");
 
     return setContainer;
   }
 
-  // ইনফিনিট অ্যানিমেশনে যেন কোনো গ্যাপ না পড়ে, তাই ৩টি ডুপ্লিকেট সেট ট্র্যাকে পুশ করা হলো
+  track.innerHTML = "";
   track.appendChild(createMarqueeSet(config.items));
   track.appendChild(createMarqueeSet(config.items));
   track.appendChild(createMarqueeSet(config.items));
 }
-
+// initialize Nahid Dynamic Pricing
 function initNahidDynamicPricing() {
   const config =
     typeof nahidPricingConfig !== "undefined" ? nahidPricingConfig : null;

@@ -10,11 +10,7 @@
    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet">
 
-   <link rel="stylesheet" href="assets/css/style.css">
-   <link rel="stylesheet" href="assets/css/hero-section.css">
-   <link rel="stylesheet" href="assets/css/marque.css">
-   <link rel="stylesheet" href="assets/css/services.css">
-
+   <link rel="stylesheet" href="assets/css/main.min.css">
    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
 </head>
 
@@ -46,7 +42,7 @@
             </div>
          </header>
 
-         <section class="hero-section container" id="nahidHeroSection">
+         <section class="hero-section" id="nahidHeroSection">
             <div class="hero-container">
 
                <div class="greeting-badge">
@@ -99,7 +95,7 @@
                   <div class="nahid-services-track" id="nahid-services-container">
                      <div class="nahid-service-card" id="nahid-master-card-template" style="display: none;">
                         <div class="nahid-service-card-header">
-                           <h3 class="nahid-service-card-title"></h3>
+                           <h5 class="nahid-service-card-title"></h5>
                         </div>
                         <div class="nahid-services-image-stack">
                            <img class="nahid-mockup-layer nahid-layer-bg-2" src="" alt="Stack Frame Background Two">
@@ -178,7 +174,7 @@
          -->
 
          <!-- Experience Section -->
-         <section id="nahidExperienceSection" class="nahid-experience-section">
+         <section id="nahidExperienceSection" class="nahid-experience-section container">
             <div class="nahid-exp-container">
 
                <div class="nahid-exp-header">
@@ -244,13 +240,13 @@
          </section>
 
          <!-- Portfolio Section -->
-         <section id="nahidPortfolioSection" class="portfolio-section">
+         <section id="nahidPortfolioSection" class="portfolio-section container">
             <div class="portfolio-container">
 
-               <!-- Top Header Layout -->
+               <!-- Portfolio Header -->
                <div class="portfolio-header">
-                  <h2 class="portfolio-title">Lets have a look at <br>my <span>Portfolio</span></h2>
-                  <a href="#" class="btn-see-all">See All</a>
+                  <h2 class="portfolio-title" id="portfolioMainTitle"> <span id="portfolioAccentTitle"></span></h2>
+                  <a href="#" class="btn-see-all" id="portfolioSeeAllBtn"></a>
                </div>
 
                <!-- Dynamic Slider Track Wrapper -->
@@ -284,7 +280,7 @@
          </section>
 
          <!-- Testimonial Section -->
-         <section id="nahidTestimonialsSection" class="testimonial-section">
+         <section id="nahidTestimonialsSection" class="testimonial-section ">
             <div class="testimonial-container">
 
                <!-- Section Title Area (Totally Empty Skeleton) -->
@@ -333,7 +329,7 @@
          </section>
 
          <!-- CTA Contact Section -->
-         <section id="nahidContactSection" class="cta-contact-section">
+         <section id="nahidContactSection" class="cta-contact-section container">
             <div class="cta-container">
 
                <!-- Dynamic Heading Area -->
@@ -370,7 +366,7 @@
          </section>
 
          <!-- Pricing Section -->
-         <section id="nahidPricingSection" class="pricing-section">
+         <section id="nahidPricingSection" class="pricing-section container">
             <div class="pricing-container">
 
                <div class="pricing-header">
@@ -414,7 +410,7 @@
          </section>
 
          <!-- Dynamic FAQ Section -->
-         <section id="nahidFaqSection" class="nahid-faq-section">
+         <section id="nahidFaqSection" class="nahid-faq-section container">
             <div class="faq-container">
 
                <!-- Section Header -->
@@ -431,7 +427,7 @@
          </section>
 
          <!-- Dynamic Workflow / Process Section -->
-         <section id="workflow" class="nahid-workflow-section">
+         <section id="workflow" class="nahid-workflow-section container">
             <div class="workflow-container">
 
                <!-- Section Header (Dynamically Injected) -->
@@ -533,9 +529,7 @@
       </div>
    </div>
 
-   <script src="assets/js/header.js"></script>
-   <script src="assets/js/hero-section.js"></script>
-   <script src="assets/js/hero.js"></script>
+
    <script src="assets/js/marque.js"></script>
    <script src="assets/js/app-data.js"></script>
    <script src="assets/js/main.js"></script>

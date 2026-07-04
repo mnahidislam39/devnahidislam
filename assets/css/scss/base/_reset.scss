@@ -1,0 +1,170 @@
+@use "../utilities/mixin" as *;
+
+/* Box Sizing & Reset */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+/* Root Elements */
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  background: #fff;
+  font-style: normal;
+  color: var(--text-color);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+$color-primary: #00bf63;
+$color-secondary: #051d40;
+
+$text-light-color: #ffffff;
+$text-dark-color: #051d40;
+
+$color-light-bg: #f2f4f7;
+$color-dark-bg: #111111;
+
+$color-matte-black: #1a1a1a;
+$color-mobile-bg: #161616;
+
+$color-text-muted: #555555;
+$font-main: "Plus Jakarta Sans", sans-serif;
+
+:root {
+  --primary-color: #{$color-primary};
+  --secondary-color: #{$color-secondary};
+
+  --text-light: #{$text-light-color};
+  --text-dark: #{$text-dark-color};
+
+  --light-bg: #{$color-light-bg};
+  --dark-bg: #{$color-dark-bg};
+
+  --text-main: #111111;
+  --text-muted: #{$color-text-muted};
+
+  --font-family: #{$font-main};
+  --max-width: 1320px;
+
+  // ট্রানজিশন টাইমিং
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-header: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Links */
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  color: inherit;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+/* Typography & Lists */
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Images & Media */
+img,
+picture,
+svg,
+video,
+canvas {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  font-style: italic;
+}
+
+/* Forms & Inputs */
+input,
+textarea,
+select,
+button {
+  outline: 0;
+  border: none;
+  font-family: inherit;
+  font-size: inherit;
+  background: transparent;
+}
+
+textarea {
+  resize: vertical;
+}
+
+/* Tables */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+}
+
+/* Interactive Elements & Accessibility */
+button,
+[button],
+[role="button"] {
+  cursor: pointer;
+}
+
+/* Focus Style for Accessibility */
+:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 3px;
+}
+
+/* Accessibility: User Preference for Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Selection Color */
+::selection {
+  background-color: var(--primary-color);
+  color: var(--white);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-transform: uppercase;
+}
+.section {
+  padding: 60px 0;
+}
+.section-title {
+  padding: 10px 0;
+}
