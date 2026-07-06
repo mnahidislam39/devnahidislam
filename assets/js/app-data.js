@@ -185,22 +185,32 @@ const nahidHireMeta = {
   titleStart: "Why",
   titleAccent: "Hire me?",
   description:
-    "I'm a Shopify-focused Full-Stack Web Developer, currently leading a team in delivering high-quality eCommerce solutions. My primary expertise lies in Shopify store development, customization, and performance optimization, helping businesses build scalable and conversion-focused online stores. Alongside Shopify, I have strong expertise in HTML, CSS, Bootstrap, Tailwind CSS, SASS, JavaScript, jQuery, Vue.js, PHP, and Laravel, allowing me to handle both front-end and back-end development efficiently.",
+    "I'm a Shopify-focused Full-Stack Web Developer. My primary expertise lies in Shopify store development, customization, and performance optimization, helping businesses build scalable and conversion-focused online stores. Alongside Shopify, I have strong expertise in HTML, CSS, Bootstrap, Tailwind CSS, SASS, JavaScript, jQuery, Vue.js, PHP, and Laravel, allowing me to handle both front-end and back-end development efficiently.",
   avatarImg: "assets/images/nahid.png", // Apnar high-end png image path eikhane bhashaben
-  ctaText: "Hire me",
+  ctaText: "Hire me ↗",
   ctaLink: "#contact",
 };
 // Hire Me Stats
 const nahidHireStats = [
   {
     id: 1,
-    count: "450+",
+    count: "50+",
     label: "Project Completed",
   },
   {
     id: 2,
-    count: "450+",
-    label: "Project Completed",
+    count: "40+",
+    label: "Happy Clients",
+  },
+  {
+    id: 3,
+    count: "2+",
+    label: "Years Experience",
+  },
+  {
+    id: 4,
+    count: "15+",
+    label: "Technologies",
   },
 ];
 

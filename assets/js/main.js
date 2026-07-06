@@ -415,10 +415,8 @@ function initNahidHireMeEngine() {
   const statsTrack = document.getElementById("nahid-stats-injector-track");
   const templateNode = document.getElementById("nahid-stat-node-template");
 
-  // Structural Framework Security Blocks Guards Checking
   if (!statsTrack || !templateNode) return;
 
-  // 1. Inject Basic Strings Data Content Layers
   if (titleTarget && typeof nahidHireMeta !== "undefined") {
     titleTarget.innerHTML = `${nahidHireMeta.titleStart} <span class="accent-orange">${nahidHireMeta.titleAccent}</span>`;
   }
@@ -433,7 +431,6 @@ function initNahidHireMeEngine() {
     btnTarget.href = nahidHireMeta.ctaLink;
   }
 
-  // 2. Clear old buffer tracking wrappers elements
   statsTrack.innerHTML = "";
 
   if (typeof nahidHireStats === "undefined" || nahidHireStats.length === 0)
@@ -441,19 +438,55 @@ function initNahidHireMeEngine() {
 
   const fragmentBuffer = document.createDocumentFragment();
 
-  // 3. Dynamic Node Interpolation Execution Loop
   nahidHireStats.forEach((stat) => {
-    // Read clean node markup layout content from native document template element context safely
     const nodeInstance = templateNode.content.cloneNode(true);
+    const counterElement = nodeInstance.querySelector(".stat-counter-number");
 
-    nodeInstance.querySelector(".stat-counter-number").textContent = stat.count;
+    counterElement.textContent = "0";
+    counterElement.setAttribute("data-target", parseInt(stat.count, 10) || 0);
     nodeInstance.querySelector(".stat-counter-label").textContent = stat.label;
 
     fragmentBuffer.appendChild(nodeInstance);
   });
 
-  // 4. Hit layout injection pipeline safely
   statsTrack.appendChild(fragmentBuffer);
+
+  const startCountAnimation = (element) => {
+    const target = parseInt(element.getAttribute("data-target"), 10) || 0;
+    let count = 0;
+    const duration = 2000;
+    const frameRate = 1000 / 60;
+    const totalFrames = Math.round(duration / frameRate);
+    let frame = 0;
+
+    const counter = () => {
+      frame++;
+      const progress = frame / totalFrames;
+      count = Math.round(target * progress);
+
+      if (frame < totalFrames) {
+        element.innerText = count;
+        requestAnimationFrame(counter);
+      } else {
+        element.innerText = target + "+";
+      }
+    };
+
+    requestAnimationFrame(counter);
+  };
+
+  const observerOptions = { threshold: 0.5 };
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const stats = entry.target.querySelectorAll(".stat-counter-number");
+        stats.forEach((stat) => startCountAnimation(stat));
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  observer.observe(statsTrack);
 }
 
 // Nahid Dynamic Portfolio Rendering
