@@ -51,7 +51,7 @@ const nahidHeroConfig = {
   },
   ctas: {
     portfolioLabel: "Portfolio",
-    portfolioUrl: "#",
+    portfolioUrl: "#nahidPortfolioSection",
     hireLabel: "Hire me",
     hireUrl: "#",
   },
