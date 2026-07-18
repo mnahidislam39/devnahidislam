@@ -1,5 +1,5 @@
 // ==========================================
-// NAHID HEADER CONFIGURATION & NAVIGATION DATA
+// HEADER NAVIGATION DATA
 // ==========================================
 const nahidHeaderConfig = {
   logo: {
@@ -33,7 +33,7 @@ const nahidHeaderConfig = {
 };
 
 // ==========================================
-// NAHID HERO SECTION CONFIGURATION & DATA
+// HERO SECTION CONFIGURATION & DATA
 // ==========================================
 const nahidHeroConfig = {
   badge: {
@@ -68,7 +68,9 @@ const nahidHeroConfig = {
   },
 };
 
-// Services Data
+// ==========================================
+// SERVICES SECTION DATA
+// ==========================================
 const nahidServicesMeta = {
   sectionTitle: "My",
   accentText: "Services",
@@ -147,12 +149,14 @@ const nahidServicesData = [
     link: "#",
   },
 ];
-// Experience Data
+
+// ==========================================
+// EXPERIENCE SECTION DATA
+// ==========================================
 const nahidExperienceMeta = {
   sectionTitle: "My",
   accentText: "Work Experince",
 };
-// Experience Data
 const nahidExperienceData = [
   {
     id: 1,
@@ -181,7 +185,10 @@ const nahidExperienceData = [
     dotType: "orange-pill",
   },
 ];
-// Hire Me Data
+
+// ==========================================
+// HIRE ME SECTION DATA
+// ==========================================
 const nahidHireMeta = {
   titleStart: "Why",
   titleAccent: "Hire me?",
@@ -191,7 +198,6 @@ const nahidHireMeta = {
   ctaText: "Hire me ↗",
   ctaLink: "#contact",
 };
-// Hire Me Stats
 const nahidHireStats = [
   {
     id: 1,
@@ -215,7 +221,9 @@ const nahidHireStats = [
   },
 ];
 
-// Portfolio Section Data
+// ==========================================
+// PORTFOLIO SECTION DATA
+// ==========================================
 const nahidPortfolioMeta = {
   sectionTitle: "My",
   accentText: "Portfolio",
@@ -223,15 +231,12 @@ const nahidPortfolioMeta = {
     "A selection of recent work showcasing expertise across web development, e-commerce, and custom solutions.",
   sectionSubtitle: "See All",
 };
-// Portfolio slider configuration
 const nahidPortfolioConfig = {
   loop: true,
   autoplay: true,
   autoplaySpeed: 4000,
   slidesPerView: 3, // 👈 এখানে আপনি যত দিবেন (1, 2, 3, 4) প্রতি রো-তে ততটা কার্ড শো করবে!
 };
-
-// Portfolio Data (ইমেজ পাথ এবং ডাটা অপরিবর্তিত)
 const nahidPortfolioData = [
   {
     id: 1,
@@ -293,8 +298,6 @@ const nahidTestimonialConfig = {
       "Discover how custom architecture, performance optimizations, and high-fidelity user experiences empower brands across ecosystems globally.",
   },
 };
-
-// রিভিউ কার্ডের পিওর ডাটা অ্যারে
 const nahidTestimonialData = [
   {
     name: "Nahid Islam Patil",
@@ -331,7 +334,7 @@ const nahidTestimonialData = [
 ];
 
 // ==========================================
-// NAHID CTA SECTION CONFIGURATION & DATA
+// CTA SECTION DATA
 // ==========================================
 const nahidCtaConfig = {
   heading: {
@@ -368,7 +371,9 @@ const nahidCtaConfig = {
   },
 };
 
-// marquee section configuration
+// ==========================================
+// MARQUEE SECTION DATA
+// ==========================================
 const nahidMarqueeConfig = {
   items: [
     {
@@ -433,7 +438,7 @@ const nahidMarqueeConfig = {
 };
 
 // ==========================================
-// NAHID PRICING SECTION CONFIGURATION & DATA
+//  PRICING SECTION DATA
 // ==========================================
 const nahidPricingConfig = {
   header: {
@@ -442,7 +447,6 @@ const nahidPricingConfig = {
     mainButtonText: "Custom Quote",
   },
 };
-
 const nahidPricingData = [
   {
     tier: "Basic Plan",
@@ -488,7 +492,7 @@ const nahidPricingData = [
 ];
 
 // ==========================================
-// NAHID FAQ SECTION CONFIGURATION & DATA
+// FAQ SECTION DATA
 // ==========================================
 const nahidFaqConfig = {
   titleNormal: "Frequently Asked ",
@@ -522,13 +526,12 @@ const nahidFaqConfig = {
 };
 
 // ==========================================
-// NAHID WORKFLOW SECTION CONFIGURATION & DATA
+// WORKFLOW SECTION DATA
 // ==========================================
 const nahidWorkflowConfig = {
   titleNormal: "My Professional ",
   titleHighlight: "Work Process",
 };
-
 const nahidWorkflowData = [
   {
     step: "01",
@@ -556,7 +559,9 @@ const nahidWorkflowData = [
   },
 ];
 
-// fotter configuration
+// ==========================================
+// FOOTER SECTION DATA
+// ==========================================
 const nahidFooterConfig = {
   connectBanner: {
     title: "Let's Work Together",

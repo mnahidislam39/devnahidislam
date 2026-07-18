@@ -1,5 +1,5 @@
-// Nahid Dynamic Header Rendering
-function initNahidDynamicHeader() {
+// Header Config Function
+function headerConfigFunction() {
   const config =
     typeof nahidHeaderConfig !== "undefined" ? nahidHeaderConfig : null;
   if (!config) return;
@@ -66,7 +66,6 @@ function initNahidDynamicHeader() {
 
   // ৪. 📱 মোবাইল নেভিগেশন ফিক্স লজিক
   const mobileToggle = document.getElementById("nahidMobileToggle");
-
   if (mobileToggle) {
     mobileToggle.addEventListener("click", (e) => {
       e.stopPropagation();
@@ -85,8 +84,8 @@ function initNahidDynamicHeader() {
   }
 }
 
-// Nahid Dynamic Hero Rendering
-function initNahidDynamicHero() {
+// Hero Config Function
+function heroConfigFunction() {
   const config =
     typeof nahidHeroConfig !== "undefined" ? nahidHeroConfig : null;
   if (!config) return;
@@ -144,8 +143,8 @@ function initNahidDynamicHero() {
     decoLine.innerHTML = config.decorations.leftLineSvg || "";
 }
 
-// --- Global Hire Me Modal Handler ---
-function initNahidHireModalGlobal() {
+// Global Modal Config Function
+function globalModalConfigFunction() {
   const hireModal = document.getElementById("nahid-hire-modal");
   const modalCloseBtn = document.getElementById("nahid-modal-close");
   const modalFormTrigger = document.getElementById("nahid-modal-form-trigger");
@@ -194,8 +193,8 @@ function initNahidHireModalGlobal() {
   window.openNahidHireModal = openHireModal;
 }
 
-// 1. Service Local Configurations
-function initNahidInfiniteSlider() {
+// Service Config Function
+function serviceConfigFunction() {
   // 1. Service Local Configurations & Context Scopes
   const nahidConfig = {
     autoSlideActive: true, // True = Auto Slide Running, False = Dev Mode
@@ -396,8 +395,9 @@ function initNahidInfiniteSlider() {
     startNahidAutoPlay();
   }
 }
-// Nahid Dynamic Experience Rendering
-function renderNahidDynamicExperience() {
+
+// Experience Config Function
+function experienceConfigFunction() {
   const titleContainer = document.getElementById("nahid-exp-title-target");
   const trackInjector = document.getElementById(
     "nahid-experience-injector-track",
@@ -456,10 +456,9 @@ function renderNahidDynamicExperience() {
   // 4. Hit direct rendering engine
   trackInjector.appendChild(fragmentBuffer);
 }
-// =======================================================================
-// WHY HIRE ME ENGINE SECTION COMPONENT
-// =======================================================================
-function initNahidHireMeEngine() {
+
+// About Me Config Function
+function aboutMeConfigFunction() {
   const titleTarget = document.getElementById("nahid-hire-title-target");
   const descTarget = document.getElementById("nahid-hire-desc-target");
   const avatarTarget = document.getElementById("nahid-hire-avatar-target");
@@ -553,8 +552,8 @@ function initNahidHireMeEngine() {
   observer.observe(statsTrack);
 }
 
-// Nahid Dynamic Portfolio Rendering
-function renderNahidDynamicPortfolio() {
+// Portfolio Config Function
+function portfolioConfigFunction() {
   const config =
     typeof nahidPortfolioConfig !== "undefined"
       ? nahidPortfolioConfig
@@ -884,7 +883,8 @@ function renderNahidDynamicPortfolio() {
   buildSlider();
 }
 
-function initNahidFullyDynamicSlider() {
+// Testimonial Config Function 
+function testimonialConfigFunction() {
   // ডাটা সেফটি মেকানিজম ফলব্যাকস
   const config =
     typeof nahidTestimonialConfig !== "undefined"
@@ -1197,8 +1197,9 @@ function initNahidFullyDynamicSlider() {
 
   buildSlider();
 }
-// initialize Nahid Dynamic CTA Section
-function initNahidDynamicCtaSection() {
+
+// Project Form Config Function
+function projectFormConfigFunction() {
   const config = typeof nahidCtaConfig !== "undefined" ? nahidCtaConfig : null;
   if (!config) return;
 
@@ -1346,8 +1347,8 @@ function initNahidDynamicCtaSection() {
 
 }
 
-// marquee engine for Nahid Tilted Marquee Section
-function initNahidTiltedMarquee() {
+// Marquee Config Function
+function marqueeConfigFunction() {
   const config =
     typeof nahidMarqueeConfig !== "undefined" ? nahidMarqueeConfig : null;
   const track = document.getElementById("nahidMarqueeTrack");
@@ -1394,8 +1395,9 @@ function initNahidTiltedMarquee() {
   track.appendChild(createMarqueeSet(config.items));
   track.appendChild(createMarqueeSet(config.items));
 }
-// initialize Nahid Dynamic Pricing
-function initNahidDynamicPricing() {
+
+// Pricing Plan Config Function
+function pricingPlanConfigFunction() {
   const config =
     typeof nahidPricingConfig !== "undefined" ? nahidPricingConfig : null;
   const pricingData =
@@ -1470,7 +1472,8 @@ function initNahidDynamicPricing() {
   });
 }
 
-function initNahidFaqAccordion() {
+// FAQ Config Function
+function faqConfigFunction() {
   const config = typeof nahidFaqConfig !== "undefined" ? nahidFaqConfig : null;
   const listContainer = document.getElementById("nahidFaqList");
   const titleEl = document.getElementById("nahidFaqTitle");
@@ -1549,7 +1552,8 @@ function initNahidFaqAccordion() {
   });
 }
 
-function initNahidWorkflowGrid() {
+// Work Flow Config Function
+function workFlowConfigFunction() {
   const config =
     typeof nahidWorkflowConfig !== "undefined" ? nahidWorkflowConfig : null;
   const workflowData =
@@ -1593,7 +1597,8 @@ function initNahidWorkflowGrid() {
   });
 }
 
-function initNahidDynamicFooter() {
+// Footer Config Function
+function footerConfigFunction() {
   const config =
     typeof nahidFooterConfig !== "undefined" ? nahidFooterConfig : null;
   if (!config) return;
@@ -1857,23 +1862,23 @@ function initNahidDynamicFooter() {
   }
 }
 
-// Master execution pipeline trigger
-function bootNahidPortfolioEngine() {
-  initNahidDynamicHeader();
-  initNahidDynamicHero();
-  initNahidInfiniteSlider();
-  renderNahidDynamicExperience();
-  initNahidHireMeEngine();
-  renderNahidDynamicPortfolio();
-  initNahidFullyDynamicSlider();
-  initNahidDynamicCtaSection();
-  initNahidTiltedMarquee();
-  initNahidDynamicPricing();
-  initNahidFaqAccordion();
-  initNahidWorkflowGrid();
-  initNahidDynamicFooter();
-  initNahidHireModalGlobal();
+// Master Function
+function masterFunction() {
+  headerConfigFunction();
+  heroConfigFunction();
+  serviceConfigFunction();
+  experienceConfigFunction();
+  aboutMeConfigFunction();
+  portfolioConfigFunction();
+  testimonialConfigFunction();
+  projectFormConfigFunction();
+  marqueeConfigFunction();
+  pricingPlanConfigFunction();
+  faqConfigFunction();
+  workFlowConfigFunction();
+  footerConfigFunction();
+  globalModalConfigFunction();
 }
 
-// Master execution pipeline trigger
-document.addEventListener("DOMContentLoaded", bootNahidPortfolioEngine);
+// Master Function Call
+document.addEventListener("DOMContentLoaded", masterFunction);
