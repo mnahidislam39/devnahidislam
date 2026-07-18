@@ -81,7 +81,7 @@ const nahidServicesData = [
   {
     id: 1,
     title: "Custom Web Development",
-    icon: "assets/icons/web-dev.svg",
+    icon: "assets/images/icons/SWebDesignDevelopment.webp",
     desc: "Custom websites and web applications built with modern technologies.",
     features: ["Responsive Design", "SEO Optimization", "Fast Performance", "Cross Browser Compatible"],
     link: "#"
@@ -89,7 +89,7 @@ const nahidServicesData = [
   {
     id: 2,
     title: "E-Commerce Solutions",
-    icon: "assets/icons/wp-dev.svg",
+    icon: "assets/images/icons/Se-commerce.webp",
     desc: "Complete online stores with secure payment integration and inventory management.",
     features: ["Payment Gateways", "Product Management", "Order Tracking", "Customer Accounts"],
     link: "#"
@@ -97,7 +97,7 @@ const nahidServicesData = [
   {
     id: 3,
     title: "Shopify Development",
-    icon: "assets/icons/shopify.svg",
+    icon: "assets/images/icons/SShopify.webp",
     desc: "Shopify theme customization and app development for enhanced store functionality.",
     features: ["Theme Customization", "Liquid Templates", "App Integration", "Performance Optimization"],
 
@@ -106,7 +106,7 @@ const nahidServicesData = [
   {
     id: 4,
     title: "WordPress Development",
-    icon: "assets/icons/ecommerce.svg",
+    icon: "assets/images/icons/swordpress.webp",
     desc: "Custom WordPress themes, plugins, and WooCommerce solutions tailored to your needs.",
     features: ["Custom Themes", "Plugin Development", "WooCommerce Setup", "Content Migration"],
     link: "#"
@@ -114,7 +114,7 @@ const nahidServicesData = [
   {
     id: 5,
     title: "Maintenance & Support",
-    icon: "assets/icons/shopify-app.svg",
+    icon: "assets/images/icons/SMaintenanceSupport.webp",
     desc: "Ongoing website maintenance, updates, and technical support to keep your site running smoothly.",
     features: ["Bug Fixes", "Security Updates", "Performance Monitoring", "Regular Backups"],
     link: "#"

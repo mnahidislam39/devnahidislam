@@ -1238,8 +1238,8 @@ function projectFormConfigFunction() {
 
   // ৩. সার্ভিস লিস্ট
   const serviceItems = [
-    { text: "Web Design & Development" }, { text: "E-commerce" },
-    { text: "Shopify Development" }, { text: "WordPress Development" }, { text: "web optimization" }, { text: "Consulting" }
+    { text: "Custom Web Design & Development" }, { text: "E-commerce" },
+    { text: "Shopify Development" }, { text: "WordPress Development" }, { text: "web optimization" }, { text: "Maintenance & Support" }, { text: "Consulting" }
   ];
 
   // ৪. ড্রপডাউন পপুলেট করা

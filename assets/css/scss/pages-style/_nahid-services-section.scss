@@ -34,6 +34,8 @@
       position: relative;
       padding: 30px 0;
 
+
+
       .nahid-prev-btn,
       .nahid-next-btn {
         position: absolute;
@@ -101,6 +103,7 @@
           border-radius: 32px;
           padding: 30px;
           display: flex;
+          gap: 16px;
           flex-direction: column;
           box-sizing: border-box;
           position: relative;
@@ -130,32 +133,53 @@
 
         }
 
+        .nahid-card-1,
+        .nahid-card-5 {
 
+          .nahid-card-icon {
+            img {
+              max-width: 30px !Important;
+            }
+          }
 
+        }
 
         // ইমেজ স্ট্যাক
         .nahid-card-icon {
 
+          background: var(--primary-color);
+          border-radius: 50px;
+          width: 50px;
+          height: 50px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+
           img {
             width: 100%;
-            height: 100%;
+            max-width: 40px;
+            height: auto;
             object-fit: cover;
-            border-radius: 18px;
           }
         }
+
+
+
+
 
         // কন্টেন্ট স্টাইল
         .nahid-service-card-title {
           font-weight: 600;
           font-size: 1.25rem;
           margin: 0;
+
         }
 
         .nahid-service-desc {
           font-size: 0.9rem;
           color: var(--text-light);
           line-height: 1.5;
-          margin: 15px 0;
         }
 
         .nahid-service-features {
