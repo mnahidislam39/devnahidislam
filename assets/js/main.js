@@ -536,123 +536,42 @@ function aboutMeConfigFunction() {
   observer.observe(statsTrack);
 }
 
-// নিশ্চিত করুন ডোম পুরোপুরি লোড হওয়ার পর ইঞ্জিন রান করবে
-document.addEventListener("DOMContentLoaded", () => {
-  portfolioConfigFunction();
-});
-
 function portfolioConfigFunction() {
   const config = typeof nahidPortfolioConfig !== "undefined" ? nahidPortfolioConfig : { loop: true, autoplay: true, autoplaySpeed: 4000, slidesPerView: 3 };
   const projectsData = typeof nahidPortfolioData !== "undefined" ? nahidPortfolioData : [];
-
   const slider = document.getElementById("portfolioSlider");
   const pagination = document.getElementById("sliderPagination");
 
-  // ==========================================
-  // ১. হেডার টেক্সট ডাইনামিক রেন্ডারিং লজিক
-  // ==========================================
   const metaData = typeof nahidPortfolioMeta !== "undefined" ? nahidPortfolioMeta : null;
   const headerMainTitle = document.getElementById("portfolioMainTitle");
   const headerSubTitle = document.getElementById("portfolioSubTitle");
   const headerDescription = document.getElementById("portfolioDescription");
 
   if (metaData) {
-    if (headerMainTitle && metaData.sectionTitle) {
-      headerMainTitle.childNodes[0].textContent = metaData.sectionTitle + " ";
-    }
-    if (headerDescription && metaData.portfolioDescription) {
-      headerDescription.textContent = metaData.portfolioDescription;
-    }
-    if (headerSubTitle && metaData.accentText) {
-      headerSubTitle.textContent = metaData.accentText;
-    }
+    if (headerMainTitle && metaData.sectionTitle) headerMainTitle.childNodes[0].textContent = metaData.sectionTitle + " ";
+    if (headerDescription && metaData.portfolioDescription) headerDescription.textContent = metaData.portfolioDescription;
+    if (headerSubTitle && metaData.accentText) headerSubTitle.textContent = metaData.accentText;
   }
 
   if (projectsData.length === 0 || !slider || !pagination) return;
 
-  const slidesPerView = config.slidesPerView || 3;
   const isMobile = window.innerWidth <= 768;
-  const finalSlidesPerView = isMobile ? 1 : slidesPerView;
+  const finalSlidesPerView = isMobile ? 1 : (config.slidesPerView || 3);
 
-  let currentIndex = config.loop ? finalSlidesPerView : 0;
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
-  let animationID = 0;
-  let autoplayTimer = null;
-  let isTransitioning = false;
-
-  // ==========================================
-  // ২. স্লাইডার ট্র্যাক ও পেজিনেশন বিল্ড ইঞ্জিন
-  // ==========================================
-  function buildSlider() {
-    slider.innerHTML = "";
-    pagination.innerHTML = "";
-
-    // পেজিনেশন ডটস তৈরি
-    projectsData.forEach((_, index) => {
-      const dot = document.createElement("div");
-      dot.classList.add("dot");
-      if (index === 0) dot.classList.add("active");
-      dot.addEventListener("click", () => {
-        if (isTransitioning) return;
-        stopAutoplay();
-        moveToSlide(config.loop ? index + finalSlidesPerView : index);
-        startAutoplay();
-      });
-      pagination.appendChild(dot);
-    });
-
-    // ইনফিনিট ক্লোনিং ইঞ্জিন
-    if (config.loop) {
-      for (let i = projectsData.length - finalSlidesPerView; i < projectsData.length; i++) {
-        if (projectsData[i]) slider.appendChild(createSlideNode(projectsData[i]));
-      }
-      projectsData.forEach((project) => slider.appendChild(createSlideNode(project)));
-      for (let i = 0; i < finalSlidesPerView; i++) {
-        if (projectsData[i]) slider.appendChild(createSlideNode(projectsData[i]));
-      }
-    } else {
-      projectsData.forEach((project) => slider.appendChild(createSlideNode(project)));
-    }
-
-    applyDynamicSlideWidths();
-
-    setTimeout(() => {
-      updateSliderPositionWithoutAnimation();
-      startAutoplay();
-    }, 50);
-  }
-
-  function applyDynamicSlideWidths() {
-    const slides = slider.querySelectorAll(".portfolio-slide");
-    if (slides.length === 0) return;
-    const style = window.getComputedStyle(slider);
-    const gap = parseFloat(style.gap) || 0;
-
-    slides.forEach((slide) => {
-      const widthCalc = `calc((100% - ${(finalSlidesPerView - 1) * gap}px) / ${finalSlidesPerView})`;
-      slide.style.flex = `0 0 ${widthCalc}`;
-      slide.style.minWidth = widthCalc;
-    });
-  }
+  let currentIndex = finalSlidesPerView;
+  let isDragging = false, startX = 0, currentTranslate = 0, prevTranslate = 0, animationID = 0, autoplayTimer = null, isTransitioning = false;
 
   function createSlideNode(project) {
     const template = document.getElementById("portfolioSlideTemplate");
     const slide = template.content.cloneNode(true).querySelector(".portfolio-slide");
-
-    // ডেটা ম্যাপিং
     slide.querySelector(".card-img").src = project.image;
     slide.querySelector(".card-img").alt = project.title;
     slide.querySelector(".watermark-text").textContent = project.watermark;
     slide.querySelector(".project-title").textContent = project.title;
     slide.querySelector(".project-desc-area").textContent = project.description;
-    // slide.querySelector(".arrow-link").href = project.link;
 
-    // ট্যাগস রেন্ডারিং
     const tagsContainer = slide.querySelector(".tags-container");
-    tagsContainer.innerHTML = ''; // ক্লিয়ার করা
+    tagsContainer.innerHTML = '';
     project.tags.forEach(tag => {
       const span = document.createElement("span");
       span.className = "tag-badge";
@@ -660,187 +579,118 @@ function portfolioConfigFunction() {
       tagsContainer.appendChild(span);
     });
 
-    // বাটন ক্লিক লজিক (ইভেন্ট লিসেনার)
-    const actionBtn = slide.querySelector(".card-action-btn");
-    actionBtn.addEventListener("click", (e) => {
+    slide.querySelector(".card-action-btn").addEventListener("click", (e) => {
       e.stopPropagation();
-
-      // অন্য কার্ডগুলো বন্ধ করা
-      document.querySelectorAll(".portfolio-slide").forEach(s => {
-        if (s !== slide) s.classList.remove("expanded");
-      });
-
-      // টগল লজিক
+      document.querySelectorAll(".portfolio-slide").forEach(s => s !== slide && s.classList.remove("expanded"));
       slide.classList.toggle("expanded");
-      actionBtn.textContent = slide.classList.contains("expanded") ? "Hide" : "View";
+      e.target.textContent = slide.classList.contains("expanded") ? "Hide" : "View";
     });
-
     return slide;
   }
 
-  // বাকি স্লাইডার ইঞ্জিন লজিক এখানে থাকবে (buildSlider, moveToSlide, etc.)
+  function buildSlider() {
+    slider.innerHTML = "";
+    pagination.innerHTML = "";
 
-  // ==========================================
-  // ৪. স্লাইডার মুভমেন্ট ও ট্রানজিশন কন্ট্রোল
-  // ==========================================
-  function moveToSlide(index, animated = true) {
-    const slides = document.querySelectorAll(".portfolio-slide");
-    if (slides.length === 0) return;
-
-    currentIndex = index;
-    isTransitioning = true;
-
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const style = window.getComputedStyle(slider);
-    const gap = parseFloat(style.gap) || 0;
-
-    currentTranslate = -currentIndex * (slideWidth + gap);
-    prevTranslate = currentTranslate;
-
-    slider.style.transition = animated ? "transform 0.5s cubic-bezier(0.25, 1, 0.5, 1)" : "none";
-    slider.style.transform = `translateX(${currentTranslate}px)`;
-
-    // অ্যাক্টিভ পেজিনেশন ডট ক্যালকুলেশন
-    let activeIndex = currentIndex;
-    if (config.loop) {
-      if (currentIndex < finalSlidesPerView) {
-        activeIndex = projectsData.length - (finalSlidesPerView - currentIndex);
-      } else if (currentIndex >= projectsData.length + finalSlidesPerView) {
-        activeIndex = currentIndex - (projectsData.length + finalSlidesPerView);
-      } else {
-        activeIndex = currentIndex - finalSlidesPerView;
-      }
-    }
-
-    if (activeIndex < 0) activeIndex = 0;
-    if (activeIndex >= projectsData.length) activeIndex = projectsData.length - 1;
-
-    updateDots(activeIndex);
-  }
-
-  slider.addEventListener("transitionend", () => {
-    isTransitioning = false;
-    if (!config.loop) return;
-
-    if (currentIndex <= 0) {
-      currentIndex = projectsData.length;
-      updateSliderPositionWithoutAnimation();
-    } else if (currentIndex >= projectsData.length + finalSlidesPerView) {
-      currentIndex = finalSlidesPerView;
-      updateSliderPositionWithoutAnimation();
-    }
-  });
-
-  function updateSliderPositionWithoutAnimation() {
-    const slides = document.querySelectorAll(".portfolio-slide");
-    if (slides.length === 0) return;
-    const slideWidth = slides[0].getBoundingClientRect().width;
-    const gap = parseFloat(window.getComputedStyle(slider).gap) || 0;
-
-    currentTranslate = -currentIndex * (slideWidth + gap);
-    prevTranslate = currentTranslate;
-    slider.style.transition = "none";
-    slider.style.transform = `translateX(${currentTranslate}px)`;
-  }
-
-  function updateDots(activeIndex) {
-    document.querySelectorAll(".slider-pagination .dot").forEach((dot, idx) => {
-      dot.classList.toggle("active", idx === activeIndex);
+    // Create Pagination
+    projectsData.forEach((_, index) => {
+      const dot = document.createElement("div");
+      dot.classList.add("dot");
+      if (index === 0) dot.classList.add("active");
+      dot.addEventListener("click", () => {
+        stopAutoplay();
+        moveToSlide(index + finalSlidesPerView);
+        startAutoplay();
+      });
+      pagination.appendChild(dot);
     });
-  }
 
-  function startAutoplay() {
-    if (!config.autoplay) return;
-    stopAutoplay();
-    autoplayTimer = setInterval(() => {
-      if (!isTransitioning && !slider.querySelector(".portfolio-slide.expanded")) {
-        moveToSlide(currentIndex + 1);
-      }
-    }, config.autoplaySpeed);
-  }
+    // Loop Logic: Add clones
+    const slidesToClone = finalSlidesPerView;
+    for (let i = projectsData.length - slidesToClone; i < projectsData.length; i++) slider.appendChild(createSlideNode(projectsData[i]));
+    projectsData.forEach(project => slider.appendChild(createSlideNode(project)));
+    for (let i = 0; i < slidesToClone; i++) slider.appendChild(createSlideNode(projectsData[i]));
 
-  function stopAutoplay() {
-    if (autoplayTimer) clearInterval(autoplayTimer);
-  }
-
-  // ==========================================
-  // ৫. ড্র্যাগ ও টাচ সাপোর্ট
-  // ==========================================
-  slider.addEventListener("mousedown", dragStart);
-  slider.addEventListener("touchstart", dragStart, { passive: true });
-  slider.addEventListener("mousemove", dragAction);
-  slider.addEventListener("touchmove", dragAction, { passive: true });
-  slider.addEventListener("mouseup", dragEnd);
-  slider.addEventListener("mouseleave", dragEnd);
-  slider.addEventListener("touchend", dragEnd);
-
-  function dragStart(e) {
-    if (isTransitioning) return;
-    isDragging = true;
-    stopAutoplay();
-    slider.style.transition = "none";
-    startX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-    animationID = requestAnimationFrame(dragAnimationLoop);
-  }
-
-  function dragAction(e) {
-    if (!isDragging) return;
-    const currentX = e.type.includes("touch") ? e.touches[0].clientX : e.clientX;
-    currentTranslate = prevTranslate + (currentX - startX);
-  }
-
-  function dragEnd() {
-    if (!isDragging) return;
-    isDragging = false;
-    cancelAnimationFrame(animationID);
-    const movedBy = currentTranslate - prevTranslate;
-
-    if (movedBy < -70) moveToSlide(currentIndex + 1);
-    else if (movedBy > 70) moveToSlide(currentIndex - 1);
-    else moveToSlide(currentIndex);
-
+    applyDynamicSlideWidths();
+    updateSliderPosition(false);
     startAutoplay();
   }
 
-  function dragAnimationLoop() {
-    if (isDragging) {
-      slider.style.transform = `translateX(${currentTranslate}px)`;
-      animationID = requestAnimationFrame(dragAnimationLoop);
+  function applyDynamicSlideWidths() {
+    const slides = slider.querySelectorAll(".portfolio-slide");
+    const gap = parseFloat(window.getComputedStyle(slider).gap) || 0;
+    slides.forEach(slide => {
+      slide.style.flex = `0 0 calc((100% - ${(finalSlidesPerView - 1) * gap}px) / ${finalSlidesPerView})`;
+    });
+  }
+
+  function updateSliderPosition(animated = true) {
+    const slides = slider.querySelectorAll(".portfolio-slide");
+    const slideWidth = slides[0].offsetWidth;
+    const gap = parseFloat(window.getComputedStyle(slider).gap) || 0;
+    const containerWidth = slider.parentElement.offsetWidth;
+
+    const centerOffset = (containerWidth / 2) - (slideWidth / 2);
+    const translate = centerOffset - (currentIndex * (slideWidth + gap));
+
+    slider.style.transition = animated ? "transform 0.5s ease-out" : "none";
+    slider.style.transform = `translateX(${translate}px)`;
+    prevTranslate = translate;
+
+    // Active class
+    slides.forEach((s, i) => s.classList.toggle("activePortfolioSlide", i === currentIndex));
+
+    // Update dots
+    const realIndex = (currentIndex - finalSlidesPerView + projectsData.length) % projectsData.length;
+    document.querySelectorAll(".slider-pagination .dot").forEach((dot, idx) => dot.classList.toggle("active", idx === realIndex));
+  }
+
+  function moveToSlide(index) {
+    if (isTransitioning) return;
+    isTransitioning = true;
+    currentIndex = index;
+    updateSliderPosition(true);
+    setTimeout(() => isTransitioning = false, 500);
+  }
+
+  // Loop Fix
+  slider.addEventListener("transitionend", () => {
+    isTransitioning = false;
+    if (currentIndex <= finalSlidesPerView - 1) {
+      currentIndex = projectsData.length + (currentIndex % finalSlidesPerView);
+      updateSliderPosition(false);
+    } else if (currentIndex >= projectsData.length + finalSlidesPerView) {
+      currentIndex = finalSlidesPerView;
+      updateSliderPosition(false);
     }
-  }
-
-  // ==========================================
-  // ৬. নিখুঁত অ্যারো বাটন লজিক ফিক্স
-  // ==========================================
-  const prevBtn = document.querySelector(".nahid-portfolio-prev");
-  const nextBtn = document.querySelector(".nahid-portfolio-next");
-
-  if (prevBtn) {
-    prevBtn.onclick = (e) => {
-      e.preventDefault();
-      if (isTransitioning) return;
-      stopAutoplay();
-      moveToSlide(currentIndex - 1);
-      startAutoplay();
-    };
-  }
-
-  if (nextBtn) {
-    nextBtn.onclick = (e) => {
-      e.preventDefault();
-      if (isTransitioning) return;
-      stopAutoplay();
-      moveToSlide(currentIndex + 1);
-      startAutoplay();
-    };
-  }
-
-  window.addEventListener("resize", () => {
-    buildSlider();
   });
 
+  // Autoplay
+  function startAutoplay() { if (config.autoplay) autoplayTimer = setInterval(() => moveToSlide(currentIndex + 1), config.autoplaySpeed); }
+  function stopAutoplay() { clearInterval(autoplayTimer); }
+
+  // Dragging
+  slider.addEventListener("mousedown", (e) => { isDragging = true; startX = e.pageX; stopAutoplay(); });
+  window.addEventListener("mousemove", (e) => { if (!isDragging) return; slider.style.transform = `translateX(${prevTranslate + (e.pageX - startX)}px)`; });
+  window.addEventListener("mouseup", (e) => {
+    if (!isDragging) return;
+    isDragging = false;
+    const movedBy = e.pageX - startX;
+    if (movedBy < -50) moveToSlide(currentIndex + 1);
+    else if (movedBy > 50) moveToSlide(currentIndex - 1);
+    else updateSliderPosition(true);
+    startAutoplay();
+  });
+
+  // Nav Buttons
+  document.querySelector(".nahid-portfolio-prev")?.addEventListener("click", () => { stopAutoplay(); moveToSlide(currentIndex - 1); startAutoplay(); });
+  document.querySelector(".nahid-portfolio-next")?.addEventListener("click", () => { stopAutoplay(); moveToSlide(currentIndex + 1); startAutoplay(); });
+
+  window.addEventListener("resize", buildSlider);
   buildSlider();
 }
+
+portfolioConfigFunction();
 
 // Testimonial Config Function 
 function testimonialConfigFunction() {

@@ -20,6 +20,32 @@
       gap: 20px;
     }
 
+    /* .slider-track বা #portfolioSlider এর জন্য */
+    #portfolioSlider {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      /* এটি স্লাইডগুলোকে ভার্টিক্যালি সেন্টারে রাখবে */
+      gap: 30px;
+      /* স্লাইডের মাঝখানে গ্যাপ */
+      transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+      will-change: transform;
+    }
+
+    /* স্লাইডগুলোকে স্কেলের মাধ্যমে সেন্টারিং এফেক্ট দেওয়া */
+    .portfolio-slide {
+      transition: transform 0.4s ease, opacity 0.4s ease;
+      transform: scale(0.85);
+      /* সাইড স্লাইডগুলো ছোট থাকবে */
+      opacity: 0.5;
+
+      &.activePortfolioSlide {
+        transform: scale(1);
+        /* মাঝখানের স্লাইডটি বড় হবে */
+        opacity: 1;
+      }
+    }
+
     span#portfolioSubTitle {
       color: var(--primary-color);
     }
@@ -74,16 +100,29 @@
 
   .slider-track {
     display: flex;
-    gap: 30px;
+    // gap: 30px;
     will-change: transform;
     cursor: grab;
+    padding: 10px 0;
   }
 
   .portfolio-slide {
-    flex-shrink: 0;
+    flex: 0 0 auto;
+    /* এটি কার্ডের সাইজ নড়াচড়া করতে দেবে না */
     box-sizing: border-box;
     user-select: none;
     position: relative;
+    box-shadow: 0 0 10px -5px var(--secondary-color);
+    border-radius: 25px;
+    transition: 0.4s ease;
+    transform: scale(.8);
+    opacity: .2;
+
+    &.activePortfolioSlide {
+      transform: scale(1); // মাঝখানের স্লাইডটি সামান্য বড় হবে
+      opacity: 1;
+
+    }
 
     // যখন কার্ড এক্সপ্যান্ড হবে তখন ওভারলে ডিটেইলস দেখাবে
     &.expanded {
@@ -101,9 +140,9 @@
     height: 480px;
     border-radius: 24px;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    // background-color: rgba(255, 255, 255, 0.03);
+    // border: 1px solid rgba(255, 255, 255, 0.08);
+    // box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
 
     img {
       width: 100%;

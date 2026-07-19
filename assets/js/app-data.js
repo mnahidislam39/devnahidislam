@@ -209,12 +209,12 @@ const nahidPortfolioMeta = {
   accentText: "Portfolio",
   portfolioDescription:
     "A selection of recent work showcasing expertise across web development, e-commerce, and custom solutions.",
-  sectionSubtitle: "See All",
+  // sectionSubtitle: "See All",
 };
 
 const nahidPortfolioConfig = {
   loop: true,
-  autoplay: true,
+  autoplay: false,
   autoplaySpeed: 4000,
   slidesPerView: 3,
 };
@@ -257,14 +257,15 @@ const nahidPortfolioData = [
     id: 4,
     title: "Fotocademia - E-commerce Platform",
     watermark: "Fotocademia",
-    image: "assets/images/grow-axit-businessdRK.webp",
-    images: ["assets/images/grow-axit-businessdRK.webp", "assets/images/portfoilo.webp"],
+    image: "assets/images/grow-business.webp",
+    images: ["assets/images/grow-business.webp", "assets/images/grow-axit-businessdRK.webp"],
     link: "#",
     tags: ["Shopify", "UI/UX Design", "E-commerce", "Minimalist"],
     description:
       "A premium conversion-driven online academy platform built for seamless photography course sales, digital ebooks distribution, and destination workshops management.",
   },
 ];
+
 // ==========================================
 // NAHID TESTIMONIAL CONFIGURATION & DATA
 // ==========================================
