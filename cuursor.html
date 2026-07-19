@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Premium Portfolio Custom Cursor</title>
+
+   <style>
+      /* --- Base Page Config Settings --- */
+      * {
+         box-sizing: border-box;
+         margin: 0;
+         padding: 0;
+      }
+
+      body {
+         background-color: #0b0c10;
+         color: #ffffff;
+         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         min-height: 100vh;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         overflow-x: hidden;
+      }
+
+      /* Hide cursor desktop environment processing (Will fallback on mobile) */
+      @media (pointer: fine) {
+
+         html,
+         body,
+         a,
+         button,
+         .hover-target {
+            cursor: none !important;
+         }
+      }
+
+      .demo-wrapper {
+         text-align: center;
+         max-width: 600px;
+         padding: 20px;
+      }
+
+      .interactive-showcase {
+         margin-top: 40px;
+         display: flex;
+         gap: 20px;
+         justify-content: center;
+      }
+
+      .hover-target {
+         padding: 15px 30px;
+         border: 1px solid rgba(255, 255, 255, 0.1);
+         background: rgba(255, 255, 255, 0.03);
+         color: #fff;
+         text-decoration: none;
+         border-radius: 8px;
+         font-weight: 500;
+         transition: background 0.3s ease;
+      }
+
+      .hover-target:hover {
+         background: rgba(255, 255, 255, 0.1);
+      }
+
+      /* --- Premium Custom Cursor Core Structural Layer --- */
+      .cursor-container {
+         position: fixed;
+         top: 0;
+         left: 0;
+         width: 100%;
+         height: 100%;
+         pointer-events: none;
+         /* Never blocks clicks */
+         z-index: 99999;
+         mix-blend-mode: difference;
+         /* Awwwards premium style dynamic overlay color effect */
+      }
+
+      /* Outer Glow Ring Layout */
+      .custom-cursor-outer {
+         position: absolute;
+         width: 32px;
+         height: 32px;
+         border: 2px solid #00E5FF;
+         border-radius: 50%;
+         background-color: transparent;
+         transform: translate(-50%, -50%) scale(1);
+         box-shadow: 0 0 12px rgba(0, 229, 255, 0.35);
+         transition:
+            border-color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         /* Bounce/elastic look mapping */
+         will-change: transform, top, left;
+      }
+
+      /* Glowing Inner Dot Engine */
+      .custom-cursor-inner {
+         position: absolute;
+         width: 6px;
+         height: 6px;
+         background-color: #00E5FF;
+         border-radius: 50%;
+         transform: translate(-50%, -50%) scale(1);
+         box-shadow: 0 0 8px rgba(0, 229, 255, 0.6);
+         transition:
+            background-color 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            box-shadow 0.5s cubic-bezier(0.25, 1, 0.5, 1),
+            transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+         will-change: top, left;
+      }
+
+      /* --- Dynamic Interaction Modifier States --- */
+
+      /* Hover Over Selectors Properties */
+      .cursor-container.is-hovered .custom-cursor-outer {
+         transform: translate(-50%, -50%) scale(1.8);
+         border-color: #FF4D6D;
+         box-shadow: 0 0 20px rgba(255, 77, 109, 0.45);
+      }
+
+      .cursor-container.is-hovered .custom-cursor-inner {
+         transform: translate(-50%, -50%) scale(2.2);
+         background-color: #FF4D6D;
+         box-shadow: 0 0 12px rgba(255, 77, 109, 0.7);
+      }
+
+      /* Mouse Pressed / Compress Impact Active Properties */
+      .cursor-container.is-clicked .custom-cursor-outer {
+         transform: translate(-50%, -50%) scale(1.4);
+      }
+
+      .cursor-container.is-hovered.is-clicked .custom-cursor-outer {
+         transform: translate(-50%, -50%) scale(2.2);
+      }
+
+      /* --- Fading Trail Ring Dot Array Setup --- */
+      .trail-circle {
+         position: absolute;
+         width: 8px;
+         height: 8px;
+         border-radius: 50%;
+         background-color: rgba(0, 229, 255, 0.6);
+         transform: translate(-50%, -50%);
+         pointer-events: none;
+         will-change: top, left;
+      }
+
+      /* --- Click Impact Wave Ripple Animation Context --- */
+      .cursor-ripple {
+         position: absolute;
+         border: 2px solid #00E5FF;
+         border-radius: 50%;
+         transform: translate(-50%, -50%);
+         animation: ripple-out 0.6s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+      }
+
+      @keyframes ripple-out {
+         0% {
+            width: 20px;
+            height: 20px;
+            opacity: 1;
+         }
+
+         100% {
+            width: 90px;
+            height: 90px;
+            opacity: 0;
+            border-color: #FF4D6D;
+         }
+      }
+   </style>
+
+
+</head>
+
+<body>
+
+   <!-- Custom Cursor Wrapper Context -->
+   <div class="cursor-container">
+      <!-- Trailing Dots (6 Circles Layer) -->
+      <div class="cursor-trail-container"></div>
+      <!-- Main Interactive Cursor Elements -->
+      <div class="custom-cursor-outer"></div>
+      <div class="custom-cursor-inner"></div>
+   </div>
+
+   <!-- Test Elements to Verify States -->
+   <main class="demo-wrapper">
+      <h1>Custom Neon Cursor</h1>
+      <p>Move your mouse, click anywhere, or hover over the interactive blocks below.</p>
+
+      <div class="interactive-showcase">
+         <a href="#" class="hover-target">Interactive Link</a>
+         <button class="hover-target">Project Card Callout</button>
+      </div>
+   </main>
+
+
+
+   <script>
+      document.addEventListener('DOMContentLoaded', () => {
+         // Mobile / Touch devices checks mapping (Disable logic parameters system setup initialization)
+         const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+         if (isTouchDevice) {
+            return; // Stop implementation process framework execution sequences on standard tactile units
+         }
+
+         // Select key pointer references nodes element template structure
+         const container = document.querySelector('.cursor-container');
+         const outerCursor = document.querySelector('.custom-cursor-outer');
+         const innerCursor = document.querySelector('.custom-cursor-inner');
+         const trailContainer = document.querySelector('.cursor-trail-container');
+
+         // Track coordinates vector processing logic setup array mapping parameters
+         let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+         let outerPos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+         let innerPos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+         // Generate 6 Fading Trailing Dots Setup Configurations
+         const totalTrails = 6;
+         const trailNodes = [];
+         const trailPositions = Array.from({ length: totalTrails }, () => ({ x: mouse.x, y: mouse.y }));
+
+         for (let i = 0; i < totalTrails; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('trail-circle');
+
+            // Gradual transparency mapping design framework metrics scaling context
+            const opacityValue = 0.5 * (1 - (i / totalTrails));
+            const scaleValue = 1 - (i / totalTrails) * 0.5;
+
+            dot.style.opacity = opacityValue;
+            dot.style.transform = `translate(-50%, -50%) scale(${scaleValue})`;
+
+            trailContainer.appendChild(dot);
+            trailNodes.push(dot);
+         }
+
+         // Mouse move configuration trigger system track points monitoring
+         window.addEventListener('mousemove', (e) => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+         });
+
+         /* 
+            Linear Interpolation Logic calculation engine formula context matrix logic parsing mapping:
+            Equation profile: NewPosition = CurrentPosition + (TargetPosition - CurrentPosition) * EasingFactor
+         */
+         const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+
+         // Render loop tracking module pipeline structure frame logic rate control sequence
+         function updateAnimationFrame() {
+            // Inner center point cursor logic processing metrics target configurations tracking (Fast tracking)
+            innerPos.x = lerp(innerPos.x, mouse.x, 0.35);
+            innerPos.y = lerp(innerPos.y, mouse.y, 0.35);
+            innerCursor.style.left = `${innerPos.x}px`;
+            innerCursor.style.top = `${innerPos.y}px`;
+
+            // Outer glow dynamic shell structure loop processing configurations track (Slow tracking for premium lag feel)
+            outerPos.x = lerp(outerPos.x, mouse.x, 0.14);
+            outerPos.y = lerp(outerPos.y, mouse.y, 0.14);
+            outerCursor.style.left = `${outerPos.x}px`;
+            outerCursor.style.top = `${outerPos.y}px`;
+
+            // Trail elements loop updates cascading configuration logic parameters structure engine array sequence management
+            let leaderX = innerPos.x;
+            let leaderY = innerPos.y;
+
+            for (let i = 0; i < totalTrails; i++) {
+               trailPositions[i].x = lerp(trailPositions[i].x, leaderX, 0.22);
+               trailPositions[i].y = lerp(trailPositions[i].y, leaderY, 0.22);
+
+               trailNodes[i].style.left = `${trailPositions[i].x}px`;
+               trailNodes[i].style.top = `${trailPositions[i].y}px`;
+
+               leaderX = trailPositions[i].x;
+               leaderY = trailPositions[i].y;
+            }
+
+            requestAnimationFrame(updateAnimationFrame);
+         }
+         requestAnimationFrame(updateAnimationFrame);
+
+         // Hover states element tracking parameters mapping interface layer configuration targets setup
+         const interactiveSelectors = document.querySelectorAll('.hover-target');
+
+         interactiveSelectors.forEach(element => {
+            element.addEventListener('mouseenter', () => container.classList.add('is-hovered'));
+            element.addEventListener('mouseleave', () => container.classList.remove('is-hovered'));
+         });
+
+         // Action clicks event listener dynamic handlers ripple processing sequences management layout elements setup
+         window.addEventListener('mousedown', () => {
+            container.classList.add('is-clicked');
+            createRippleRingEffect(mouse.x, mouse.y);
+         });
+
+         window.addEventListener('mouseup', () => {
+            container.classList.remove('is-clicked');
+         });
+
+         // Dynamic injection script module engine for ripple context layout instantiation parsing
+         function createRippleRingEffect(x, y) {
+            const ripple = document.createElement('div');
+            ripple.classList.add('cursor-ripple');
+            ripple.style.left = `${x}px`;
+            ripple.style.top = `${y}px`;
+
+            container.appendChild(ripple);
+
+            // Dynamic node garbage collection to prevent memory leak
+            ripple.addEventListener('animationend', () => {
+               ripple.remove();
+            });
+         }
+      });
+   </script>
+</body>
+
+</html>

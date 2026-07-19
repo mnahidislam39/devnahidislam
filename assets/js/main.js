@@ -1671,6 +1671,133 @@ function footerConfigFunction() {
   }
 }
 
+
+
+//  Premium Custom Cursor Initializer Engine
+function initCustomCursor() {
+  // 1. Mobile / Touch devices checks mapping ( tactile unit detection )
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+  if (isTouchDevice) {
+    return; // Stop implementation process framework on touch devices
+  }
+
+  // 2. Select key pointer references nodes element template structure
+  const container = document.querySelector('.cursor-container');
+  const outerCursor = document.querySelector('.custom-cursor-outer');
+  const innerCursor = document.querySelector('.custom-cursor-inner');
+  const trailContainer = document.querySelector('.cursor-trail-container');
+
+  // Safety check: Elements ready ache kina check kora
+  if (!container || !outerCursor || !innerCursor || !trailContainer) {
+    console.warn("Custom Cursor Elements not found in DOM.");
+    return;
+  }
+
+  // 3. Track coordinates vector processing logic setup array mapping parameters
+  let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  let outerPos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+  let innerPos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+  // 4. Generate 6 Fading Trailing Dots Setup Configurations
+  const totalTrails = 6;
+  const trailNodes = [];
+  const trailPositions = Array.from({ length: totalTrails }, () => ({ x: mouse.x, y: mouse.y }));
+
+  // Clear previous trails inside target container if re-initialized
+  trailContainer.innerHTML = '';
+
+  for (let i = 0; i < totalTrails; i++) {
+    const dot = document.createElement('div');
+    dot.classList.add('trail-circle');
+
+    // Gradual transparency mapping design framework metrics scaling context
+    const opacityValue = 0.5 * (1 - (i / totalTrails));
+    const scaleValue = 1 - (i / totalTrails) * 0.5;
+
+    dot.style.opacity = opacityValue;
+    dot.style.transform = `translate(-50%, -50%) scale(${scaleValue})`;
+
+    trailContainer.appendChild(dot);
+    trailNodes.push(dot);
+  }
+
+  // 5. Mouse move tracking listener updates
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+  });
+
+  // Linear Interpolation Logic calculation engine formula context matrix
+  const lerp = (start, end, amt) => (1 - amt) * start + amt * end;
+
+  // 6. Render loop tracking module pipeline structure frame logic rate control sequence
+  function updateAnimationFrame() {
+    // Inner center point cursor logic processing metrics target configurations tracking
+    innerPos.x = lerp(innerPos.x, mouse.x, 0.35);
+    innerPos.y = lerp(innerPos.y, mouse.y, 0.35);
+    innerCursor.style.left = `${innerPos.x}px`;
+    innerCursor.style.top = `${innerPos.y}px`;
+
+    // Outer glow dynamic shell structure loop processing configurations track
+    outerPos.x = lerp(outerPos.x, mouse.x, 0.14);
+    outerPos.y = lerp(outerPos.y, mouse.y, 0.14);
+    outerCursor.style.left = `${outerPos.x}px`;
+    outerCursor.style.top = `${outerPos.y}px`;
+
+    // Trail elements loop updates cascading configuration logic parameters structure
+    let leaderX = innerPos.x;
+    let leaderY = innerPos.y;
+
+    for (let i = 0; i < totalTrails; i++) {
+      trailPositions[i].x = lerp(trailPositions[i].x, leaderX, 0.22);
+      trailPositions[i].y = lerp(trailPositions[i].y, leaderY, 0.22);
+
+      trailNodes[i].style.left = `${trailPositions[i].x}px`;
+      trailNodes[i].style.top = `${trailPositions[i].y}px`;
+
+      leaderX = trailPositions[i].x;
+      leaderY = trailPositions[i].y;
+    }
+
+    requestAnimationFrame(updateAnimationFrame);
+  }
+  requestAnimationFrame(updateAnimationFrame);
+
+  // 7. Hover states element tracking parameters mapping interface layer configuration targets setup
+  const interactiveSelectors = document.querySelectorAll('.hover-target');
+
+  interactiveSelectors.forEach(element => {
+    element.addEventListener('mouseenter', () => container.classList.add('is-hovered'));
+    element.addEventListener('mouseleave', () => container.classList.remove('is-hovered'));
+  });
+
+  // 8. Action clicks event listener dynamic handlers ripple processing sequences
+  window.addEventListener('mousedown', () => {
+    container.classList.add('is-clicked');
+    createRippleRingEffect(mouse.x, mouse.y);
+  });
+
+  window.addEventListener('mouseup', () => {
+    container.classList.remove('is-clicked');
+  });
+
+  // Dynamic injection script module engine for ripple context layout instantiation parsing
+  function createRippleRingEffect(x, y) {
+    const ripple = document.createElement('div');
+    ripple.classList.add('cursor-ripple');
+    ripple.style.left = `${x}px`;
+    ripple.style.top = `${y}px`;
+
+    container.appendChild(ripple);
+
+    // Dynamic node garbage collection to prevent memory leak
+    ripple.addEventListener('animationend', () => {
+      ripple.remove();
+    });
+  }
+}
+
+
 // Master Function
 function masterFunction() {
   headerConfigFunction();
@@ -1687,6 +1814,7 @@ function masterFunction() {
   workFlowConfigFunction();
   footerConfigFunction();
   globalModalConfigFunction();
+  initCustomCursor();
 }
 
 // Master Function Call
