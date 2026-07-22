@@ -7,8 +7,9 @@ function headerConfigFunction() {
   const leftMenuContainer = document.getElementById("nahidHeaderLeftMenu");
   const rightMenuContainer = document.getElementById("nahidHeaderRightMenu");
   const logoContainer = document.getElementById("nahidHeaderLogo");
+  const header = document.querySelector(".header-container");
 
-  // ১. হেল্পার ফাংশন: মেনু আইটেম জেনারেটর
+  // ১. হেল্পার ফাংশন: মেনু আইটেম জেনারেটর (মোবাইল ক্লিকে মেনু হাইড করার লজিকসহ)
   const generateMenuItems = (container, itemsArray) => {
     if (!container || !itemsArray) return;
     container.innerHTML = ""; // ওল্ড রিসেট
@@ -20,23 +21,28 @@ function headerConfigFunction() {
       if (item.active) a.classList.add("active");
       if (item.target) a.setAttribute("target", item.target);
       a.textContent = item.label;
+
+      // 📱 মোবাইল মেনু আইটেমে ক্লিক করলে মেনু অটো হাইড হয়ে যাবে
+      a.addEventListener("click", () => {
+        if (header && header.classList.contains("mobile-nav-open")) {
+          header.classList.remove("mobile-nav-open");
+        }
+      });
+
       container.appendChild(a);
     });
   };
 
   // লোগো রেন্ডার সেকশন (Direct Link from App Data)
   if (logoContainer && config.logo) {
-    // app-data.js থেকে সরাসরি ইউআরএল নেওয়া হচ্ছে, ফাঁকা থাকলে ডিফল্ট রুট "/" বা "#" পাবে
     const homeLink =
       config.logo.homeUrl && config.logo.homeUrl.trim() !== ""
         ? config.logo.homeUrl
         : "#";
 
-    // মেইন কন্টেইনারের ভেতরে অ্যানকর ট্যাগ তৈরি
     logoContainer.innerHTML = `<a href="${homeLink}" class="brand-logo-link"></a>`;
     const logoLinkWrapper = logoContainer.querySelector(".brand-logo-link");
 
-    // কন্ডিশনাল চেকিং: ইমেজ থাকলে শুধু ইমেজ, না থাকলে শুধু টেক্সট-আইকন
     if (config.logo.imgSrc && config.logo.imgSrc.trim() !== "") {
       logoLinkWrapper.innerHTML = `
       <img src="${config.logo.imgSrc}" alt="${config.logo.text || "Logo"}" class="logo-img">
@@ -47,11 +53,11 @@ function headerConfigFunction() {
     `;
     }
   }
+
   generateMenuItems(leftMenuContainer, config.leftMenu);
   generateMenuItems(rightMenuContainer, config.rightMenu);
 
   // ৩. 🎯 স্টিকি হেডার ইঞ্জিন (Smooth Backdrop Blurring)
-  const header = document.querySelector(".header-container");
   window.addEventListener(
     "scroll",
     () => {
@@ -64,7 +70,7 @@ function headerConfigFunction() {
     { passive: true },
   );
 
-  // ৪. 📱 মোবাইল নেভিগেশন ফিক্স লজিক
+  // ৪. 📱 মোবাইল নেভিগেশন টগল লজিক
   const mobileToggle = document.getElementById("nahidMobileToggle");
   if (mobileToggle) {
     mobileToggle.addEventListener("click", (e) => {
@@ -72,7 +78,7 @@ function headerConfigFunction() {
       header.classList.toggle("mobile-nav-open");
     });
 
-    // স্ক্রিনের যেকোনো খালি জায়গায় ক্লিক করলে মোবাইল মেনু অটোমেটিক বন্ধ হয়ে যাবে
+    // স্ক্রিনের যেকোনো খালি জায়গায় ক্লিক করলে মোবাইল মেনু অটোমেটিক বন্ধ হয়ে যাবে
     document.addEventListener("click", (e) => {
       if (
         header.classList.contains("mobile-nav-open") &&
