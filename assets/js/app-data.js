@@ -6,7 +6,7 @@ const nahidHeaderConfig = {
     imgSrc: "assets/images/nahid-logo.png",
     text: "Nahid Islam",
     // iconHtml: `<span class="logo-inner-icon">JC</span>`,
-    homeUrl: "/", // হোম পেজের লিংক (যেমন: "index.html" বা "#")
+    homeUrl: "#mainHeader", // হোম পেজের লিংক (যেমন: "index.html" বা "#")
   },
   // বাঁদিকের মেনু আইটেম লিস্ট
   leftMenu: [
