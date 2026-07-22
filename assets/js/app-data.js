@@ -226,7 +226,6 @@ const nahidPortfolioData = [
     watermark: "portfoilo",
     category: "Custom", // ডাইনামিক ট্যাবের জন্য ক্যাটাগরি
     image: "assets/images/portfoilo.webp",
-    images: ["assets/images/portfoilo.webp", "assets/images/grow-business.webp"],
     link: "#",
     tags: ["HTML", "CSS", "Tailwind CSS", "JavaScript"],
     description:
@@ -258,15 +257,43 @@ const nahidPortfolioData = [
   },
   {
     id: 4,
-    title: "Fotocademia - E-commerce Platform",
-    watermark: "Fotocademia",
+    title: "Luxe Watch",
+    watermark: "Watch Store",
     category: "Shopify",
     image: "assets/images/grow-business.webp",
     images: ["assets/images/grow-business.webp", "assets/images/grow-axit-businessdRK.webp"],
-    link: "#",
-    tags: ["Shopify", "UI/UX Design", "E-commerce", "Minimalist"],
+    // link: "#",
+    tags: ["Liquid", "JavaScript", "CSV Sync", "Minimalist"],
+    description: "A high-converting Shopify e-commerce store built for luxury and modern watches.",
+    featuresTitle: "Key Features",
+    features: [
+      {
+        title: "Custom Product Variants",
+        desc: "Seamless setup for watch strap materials (Leather/Metal), color options, and dial sizes."
+      },
+      {
+        title: "Advanced CSV Import",
+        desc: "Accurate synchronization and import of product handles, SKUs, and variants from external sources into Shopify."
+      },
+      {
+        title: "Responsive & Fast Loading",
+        desc: "Optimized for mobile and desktop to ensure high-resolution watch images load instantly."
+      }
+    ]
+  },
+  {
+    id: 5,
+    title: "Portfolio",
+    category: "shopify",
+    description: "A high-converting Shopify e-commerce store built for luxury and modern watches. Features custom Liquid sections, dynamic variant handling (strap colors, dial sizes), automated product CSV data synchronization, and a seamless checkout experience.",
+    images: [
+      "assets/images/portfoilo.webp",
+      "assets/images/grow-business.webp",
+      "assets/images/portfoilo.webp"
+    ],
+    tags: ["HTML", "SCSS", "JavaScript"],
     description:
-      "A premium conversion-driven online academy platform built for seamless photography course sales, digital ebooks distribution, and destination workshops management.",
+      "A high-converting Shopify e-commerce store built for luxury and modern watches. Features custom Liquid sections, dynamic variant handling (strap colors, dial sizes), automated product CSV data synchronization, and a seamless checkout experience.",
   },
 ];
 

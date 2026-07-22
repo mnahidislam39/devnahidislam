@@ -589,121 +589,192 @@ function portfolioGridConfigFunction() {
   }
 
 
-  // ৪. গ্রিড রেন্ডার এবং ডেটা বাইন্ডিং
+  // ৪. গ্রিড রেন্ডার এবং ডেটা বাইন্ডিং (অ্যারো স্লাইডার লজিকসহ)
   function renderGrid(filter = "All", expanded = false) {
-    // ট্যাব বদলানোর সময় কন্টেইনার ফেইড ও জুম আউট করা
-    gridContainer.style.opacity = "0";
-    gridContainer.style.transform = "scale(0.95)";
-    gridContainer.style.transition = "opacity 0.2s ease, transform 0.2s ease";
+    const existingCards = gridContainer.querySelectorAll(".portfolio-slide:not(#portfolioSlideTemplate)");
+    existingCards.forEach(card => card.remove());
 
-    setTimeout(() => {
-      const existingCards = gridContainer.querySelectorAll(".portfolio-slide:not(#portfolioSlideTemplate)");
-      existingCards.forEach(card => card.remove());
+    const filteredData = filter === "All"
+      ? portfolioData
+      : portfolioData.filter(item => item.category && item.category.toLowerCase() === filter.toLowerCase());
 
-      const filteredData = filter === "All"
-        ? portfolioData
-        : portfolioData.filter(item => item.category && item.category.toLowerCase() === filter.toLowerCase());
+    const itemsToShow = expanded ? filteredData : filteredData.slice(0, initialLimit);
 
-      const itemsToShow = expanded ? filteredData : filteredData.slice(0, initialLimit);
+    if (filteredData.length === 0) {
+      const noData = document.createElement("div");
+      noData.style.gridColumn = "1 / -1";
+      noData.style.textAlign = "center";
+      noData.style.padding = "40px";
+      noData.textContent = "No projects found in this category.";
+      gridContainer.appendChild(noData);
+      if (actionContainer) actionContainer.style.display = "none";
+      return;
+    }
 
-      if (filteredData.length === 0) {
-        const noData = document.createElement("div");
-        noData.style.gridColumn = "1 / -1";
-        noData.style.textAlign = "center";
-        noData.style.padding = "40px";
-        noData.textContent = "No projects found in this category.";
-        gridContainer.appendChild(noData);
-        if (actionContainer) actionContainer.style.display = "none";
+    itemsToShow.forEach(data => {
+      let clone = null;
 
-        gridContainer.style.opacity = "1";
-        gridContainer.style.transform = "scale(1)";
-        return;
+      if (templateCard && templateCard.content) {
+        clone = templateCard.content.cloneNode(true).firstElementChild;
+      } else if (templateCard) {
+        clone = templateCard.cloneNode(true);
+        clone.removeAttribute("id");
+        clone.style.display = "";
       }
 
-      itemsToShow.forEach(data => {
-        let clone = null;
+      if (!clone) return;
 
-        if (templateCard && templateCard.content) {
-          clone = templateCard.content.cloneNode(true).firstElementChild;
-        } else if (templateCard) {
-          clone = templateCard.cloneNode(true);
-          clone.removeAttribute("id");
-          clone.style.display = "";
-        }
+      const imgEl = clone.querySelector(".card-img");
 
-        if (!clone) return;
+      // 🖼️ একাধিক ইমেজ এবং অ্যারো স্লাইডার হ্যান্ডেলিং
+      let currentImgIndex = 0;
+      const imagesList = data.images && data.images.length > 0 ? data.images : [data.image];
 
-        const imgEl = clone.querySelector(".card-img");
-        if (imgEl && data.image) {
-          imgEl.src = data.image;
-          imgEl.alt = data.title || "";
-        }
+      if (imgEl && imagesList.length > 0) {
+        imgEl.src = imagesList[currentImgIndex];
+        imgEl.alt = data.title || "";
 
-        const watermarkEl = clone.querySelector(".watermark-text");
-        if (watermarkEl) {
-          watermarkEl.textContent = data.watermark || data.title || "";
-        }
+        // যদি একাধিক ইমেজ থাকে, তবে অ্যারো বাটনগুলো জেনারেট বা একটিভ হবে
+        const imageWrapper = imgEl.parentElement; // অথবা ইমেজের প্যারেন্ট কন্টেইনার
+        if (imagesList.length > 1 && imageWrapper) {
+          // যদি অলরেডি অ্যারো না থাকে, তবে তৈরি করে দেব
+          if (!imageWrapper.querySelector(".slide-arrow")) {
+            imageWrapper.style.position = "relative";
 
-        const titleEl = clone.querySelector(".project-title");
-        if (titleEl) {
-          titleEl.textContent = data.title || "";
-        }
+            const prevBtn = document.createElement("button");
+            prevBtn.className = "slide-arrow prev-arrow";
+            prevBtn.innerHTML = "&#10094;"; // বামমুখী অ্যারো
 
-        const cardDescEl = clone.querySelector(".project-desc-area");
-        if (cardDescEl) {
-          cardDescEl.textContent = data.description || "";
-        }
+            const nextBtn = document.createElement("button");
+            nextBtn.className = "slide-arrow next-arrow";
+            nextBtn.innerHTML = "&#10095;"; // ডানমুখী অ্যারো
 
-        const tagsContainer = clone.querySelector(".tags-container");
-        if (tagsContainer && data.tags && Array.isArray(data.tags)) {
-          tagsContainer.innerHTML = "";
-          data.tags.forEach(tag => {
-            const tagSpan = document.createElement("span");
-            tagSpan.className = "tag-badge";
-            tagSpan.textContent = tag;
-            tagsContainer.appendChild(tagSpan);
-          });
-        }
+            imageWrapper.appendChild(prevBtn);
+            imageWrapper.appendChild(nextBtn);
 
-        const actionBtn = clone.querySelector(".card-action-btn");
-        if (actionBtn) {
-          actionBtn.addEventListener("click", (e) => {
-            e.stopPropagation();
-
-            const isCurrentlyExpanded = clone.classList.contains("expanded");
-
-            gridContainer.querySelectorAll(".portfolio-slide").forEach(slide => {
-              slide.classList.remove("expanded");
-              const btn = slide.querySelector(".card-action-btn");
-              if (btn) btn.textContent = "View";
+            // প্রিভিয়াস অ্যারো ক্লিক
+            prevBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              currentImgIndex = (currentImgIndex - 1 + imagesList.length) % imagesList.length;
+              imgEl.src = imagesList[currentImgIndex];
             });
 
-            if (!isCurrentlyExpanded) {
-              clone.classList.add("expanded");
-              actionBtn.textContent = "Hide";
-            }
-          });
-        }
-
-        gridContainer.appendChild(clone);
-      });
-
-      if (actionContainer && toggleBtn) {
-        if (filteredData.length > initialLimit) {
-          actionContainer.style.display = "block";
-          toggleBtn.textContent = expanded ? "Show Less" : "Show More";
-        } else {
-          actionContainer.style.display = "none";
+            // নেক্সট অ্যারো ক্লিক
+            nextBtn.addEventListener("click", (e) => {
+              e.stopPropagation();
+              currentImgIndex = (currentImgIndex + 1) % imagesList.length;
+              imgEl.src = imagesList[currentImgIndex];
+            });
+          }
         }
       }
 
-      // ডেটা রেন্ডার হওয়ার পর স্মুথ জুম ইন এফেক্ট দিয়ে ভেসে ওঠা
-      setTimeout(() => {
-        gridContainer.style.opacity = "1";
-        gridContainer.style.transform = "scale(1)";
-      }, 50);
+      const watermarkEl = clone.querySelector(".watermark-text");
+      if (watermarkEl) {
+        watermarkEl.textContent = data.watermark || data.title || "";
+      }
 
-    }, 180);
+      const titleEl = clone.querySelector(".project-title");
+      if (titleEl) {
+        titleEl.textContent = data.title || "";
+      }
+
+      const cardDescEl = clone.querySelector(".project-desc-area");
+      if (cardDescEl) {
+        cardDescEl.textContent = data.description || "";
+      }
+
+      // 🏷️ টেক্সট স্ট্যাক ব্যাজ এবং টাইটেল ডাইনামিক রেন্ডারিং
+      // 🏷️ টেক্সট স্ট্যাক ব্যাজ এবং টাইটেল ডাইনামিক রেন্ডারিং
+      const tagsContainer = clone.querySelector(".tags-container");
+      if (tagsContainer) {
+        const tagsTitleEl = tagsContainer.querySelector(".tags-title");
+        if (tagsTitleEl) {
+          tagsTitleEl.textContent = data.tagsTitle || "Tech Stack";
+        }
+
+        const ulEl = tagsContainer.querySelector(".tags-ul") || document.createElement("ul");
+        ulEl.className = "tags-ul";
+        ulEl.innerHTML = "";
+
+        if (data.tags && Array.isArray(data.tags)) {
+          data.tags.forEach((tag, index) => {
+            const li = document.createElement("li");
+            li.className = "tags-li tag-badge";
+
+            // শেষ ট্যাগটি ছাড়া বাকিগুলোর পরে কমা যোগ হবে
+            li.textContent = index < data.tags.length - 1 ? `${tag},` : tag;
+
+            ulEl.appendChild(li);
+          });
+        }
+
+        if (!tagsContainer.querySelector(".tags-ul")) {
+          tagsContainer.appendChild(ulEl);
+        }
+      }
+
+      // ✨ কী ফিচারস (Key Features) এবং টাইটেল ডাইনামিক রেন্ডারিং
+      const featuresContainer = clone.querySelector(".fetures");
+      if (featuresContainer) {
+        // ফিচার টাইটেল সেট করা (যেমন: "Key Features")
+        const futureTitleEl = featuresContainer.querySelector(".future-title h6"); featuresContainer.querySelector(".future-title-text");
+        if (futureTitleEl) {
+          futureTitleEl.textContent = data.featuresTitle;
+        }
+
+        // ফিচার লিস্ট রেন্ডার করা
+        const futuresUl = featuresContainer.querySelector(".tags-futures");
+        if (futuresUl && data.features && Array.isArray(data.features)) {
+          futuresUl.innerHTML = "";
+          data.features.forEach(feature => {
+            const li = document.createElement("li");
+
+            if (typeof feature === "object") {
+              li.innerHTML = `${feature.title}: <span>${feature.desc}</span>`;
+            } else {
+              li.textContent = feature;
+            }
+
+            futuresUl.appendChild(li);
+          });
+        }
+      }
+      // card action
+      const actionBtn = clone.querySelector(".card-action-btn");
+      if (actionBtn) {
+        actionBtn.addEventListener("click", (e) => {
+          e.stopPropagation();
+
+          const isCurrentlyExpanded = clone.classList.contains("expanded");
+
+          // 🛑 ১. অন্য সব কার্ড বন্ধ করে দেব এবং তাদের বাটন টেক্সট "View" করে দেব
+          const allCards = gridContainer.querySelectorAll(".portfolio-slide");
+          allCards.forEach(card => {
+            card.classList.remove("expanded");
+            const btn = card.querySelector(".card-action-btn");
+            if (btn) btn.textContent = "View";
+          });
+
+          // 🔄 ২. যদি বর্তমান কার্ডটি আগে থেকে ওপেন না থাকে, তবেই এটি ওপেন করব
+          if (!isCurrentlyExpanded) {
+            clone.classList.add("expanded");
+            actionBtn.textContent = "Close";
+          }
+        });
+      }
+
+      gridContainer.appendChild(clone);
+    });
+
+    if (actionContainer && toggleBtn) {
+      if (filteredData.length > initialLimit) {
+        actionContainer.style.display = "block";
+        toggleBtn.textContent = expanded ? "Show Less" : "Show More";
+      } else {
+        actionContainer.style.display = "none";
+      }
+    }
   }
 
   // ৫. ট্যাব ক্লিক ইভেন্ট হ্যান্ডলার
