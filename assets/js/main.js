@@ -563,20 +563,39 @@ function portfolioGridConfigFunction() {
   let isExpanded = false;
   const initialLimit = 8;
 
-  // ৩. ডাইনামিক ট্যাব তৈরি
+  // ৩. ডাইনামিক ট্যাব তৈরি (যে ক্যাটাগরির প্রজেক্ট নেই, সেই ট্যাব হাইড থাকবে)
   function buildDynamicTabs() {
     if (!tabsContainer) return;
     tabsContainer.innerHTML = "";
 
     let tabsList = [];
     if (portfolioMeta.filterTabs && Array.isArray(portfolioMeta.filterTabs)) {
-      tabsList = portfolioMeta.filterTabs;
+      // যদি মেটা থেকে ট্যাব লিস্ট দেওয়া থাকে, তবে চেক করব কোনটার প্রজেক্ট আছে
+      tabsList = portfolioMeta.filterTabs.filter(tabName => {
+        if (tabName === "All") return portfolioData.length > 0;
+        return portfolioData.some(item => item.category && item.category.toLowerCase() === tabName.toLowerCase());
+      });
     } else {
+      // স্বয়ংক্রিয়ভাবে ক্যাটাগরি বের করা এবং যেগুলোর প্রজেক্ট আছে শুধু সেগুলো রাখা
       const categories = new Set();
       portfolioData.forEach(item => {
-        if (item.category) categories.add(item.category);
+        if (item.category) {
+          // ক্যাটাগরি চেক করছি যে এই ক্যাটাগরিতে প্রজেক্ট আছে কি না
+          const hasProjects = portfolioData.some(p => p.category && p.category.toLowerCase() === item.category.toLowerCase());
+          if (hasProjects) {
+            categories.add(item.category);
+          }
+        }
       });
       tabsList = ["All", ...categories];
+    }
+
+    // যদি "All" বাদে আর কোনো ট্যাব বা প্রজেক্ট না থাকে, তবে ট্যাব কন্টেইনার ফাকা রাখতে পারেন
+    if (tabsList.length <= 1) {
+      tabsContainer.style.display = "none";
+      return;
+    } else {
+      tabsContainer.style.display = "flex"; // অথবা আপনার ডিফল্ট ডিসপ্লে প্রপার্টি
     }
 
     tabsList.forEach((tabName, index) => {
