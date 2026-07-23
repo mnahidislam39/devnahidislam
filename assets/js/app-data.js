@@ -228,23 +228,23 @@ const nahidPortfolioData = [
     image: "assets/images/cms/fixras.webp",
     // images: ["assets/images/grow-business.webp", "assets/images/grow-axit-businessdRK.webp"],
     // link: "#",
-    tags: ["Liquid", "JavaScript", "CSV Sync", "Minimalist"],
-    description: "A high-converting Shopify e-commerce store built for luxury and modern watches.",
-    featuresTitle: "Key Features",
-    features: [
-      {
-        title: "Custom Product Variants",
-        desc: "Seamless setup for watch strap materials (Leather/Metal), color options, and dial sizes."
-      },
-      {
-        title: "Advanced CSV Import",
-        desc: "Accurate synchronization and import of product handles, SKUs, and variants from external sources into Shopify."
-      },
-      {
-        title: "Responsive & Fast Loading",
-        desc: "Optimized for mobile and desktop to ensure high-resolution watch images load instantly."
-      }
-    ]
+    tags: ["Shopify", "Liquid", "JavaScript", "CSV Sync", "Minimalist"],
+    description: "A modern, high-conversion Shopify e-commerce store built for tech gadgets and mobile accessories. Features custom Liquid layouts, dynamic variant handling for product specs, automated product data synchronization, and a seamless checkout user experience.",
+    // featuresTitle: "Key Features",
+    // features: [
+    //   {
+    //     title: "Custom Product Variants",
+    //     desc: "Seamless setup for watch strap materials (Leather/Metal), color options, and dial sizes."
+    //   },
+    //   {
+    //     title: "Advanced CSV Import",
+    //     desc: "Accurate synchronization and import of product handles, SKUs, and variants from external sources into Shopify."
+    //   },
+    //   {
+    //     title: "Responsive & Fast Loading",
+    //     desc: "Optimized for mobile and desktop to ensure high-resolution watch images load instantly."
+    //   }
+    // ]
   },
   {
     id: 2,
@@ -255,22 +255,22 @@ const nahidPortfolioData = [
     // images: ["assets/images/grow-business.webp", "assets/images/grow-axit-businessdRK.webp"],
     // link: "#",
     tags: ["Liquid", "JavaScript", "CSV Sync", "Minimalist"],
-    description: "A high-converting Shopify e-commerce store built for luxury and modern watches.",
-    featuresTitle: "Key Features",
-    features: [
-      {
-        title: "Custom Product Variants",
-        desc: "Seamless setup for watch strap materials (Leather/Metal), color options, and dial sizes."
-      },
-      {
-        title: "Advanced CSV Import",
-        desc: "Accurate synchronization and import of product handles, SKUs, and variants from external sources into Shopify."
-      },
-      {
-        title: "Responsive & Fast Loading",
-        desc: "Optimized for mobile and desktop to ensure high-resolution watch images load instantly."
-      }
-    ]
+    description: "A vibrant, engaging Shopify e-commerce store tailored for pet supplies and interactive accessories. Features custom-designed Liquid theme sections, dynamic collection filters, automated catalog importing, and a clean, user-friendly shopping experience.",
+    // featuresTitle: "Key Features",
+    // features: [
+    //   {
+    //     title: "Custom Product Variants",
+    //     desc: "Seamless setup for watch strap materials (Leather/Metal), color options, and dial sizes."
+    //   },
+    //   {
+    //     title: "Advanced CSV Import",
+    //     desc: "Accurate synchronization and import of product handles, SKUs, and variants from external sources into Shopify."
+    //   },
+    //   {
+    //     title: "Responsive & Fast Loading",
+    //     desc: "Optimized for mobile and desktop to ensure high-resolution watch images load instantly."
+    //   }
+    // ]
   },
 
 ];
